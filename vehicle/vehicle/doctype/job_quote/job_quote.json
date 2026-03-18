@@ -1,0 +1,443 @@
+{
+ "actions": [],
+ "autoname": "autoincrement",
+ "creation": "2026-03-18 08:58:47.321169",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "vehicle_tab",
+  "color",
+  "model",
+  "engine_number",
+  "year_model",
+  "column_break_svfi",
+  "fuel",
+  "make",
+  "reg_number",
+  "column_break_xtli",
+  "speedometer",
+  "body_type",
+  "chasis",
+  "details_tab",
+  "section_break_aqwu",
+  "column_break_orgl",
+  "status",
+  "task_1_section",
+  "task1_name",
+  "table_hlwa",
+  "task1_total_amount",
+  "task1_total_qty",
+  "task_2_section",
+  "task2_name",
+  "table_rmcw",
+  "task2_total",
+  "task2_total_qty",
+  "task_3_section",
+  "task3_name",
+  "table_mtpm",
+  "task3_total",
+  "task3_total_qty",
+  "task_4_section",
+  "task4_name",
+  "table_eptn",
+  "task4_total_qty",
+  "task4_total",
+  "task_5_section",
+  "task5_name",
+  "table_kujm",
+  "task5_total_qty",
+  "task5_total",
+  "task_6_section",
+  "table_yehe",
+  "task_7_section",
+  "table_cssa",
+  "task_8_section",
+  "table_degn",
+  "task_9_section",
+  "table_xegg",
+  "task_10_section",
+  "table_ntyi",
+  "totals_section",
+  "total_amount",
+  "column_break_ngzj",
+  "total_quantity",
+  "customer_tab",
+  "first_name",
+  "surname",
+  "column_break_sybl",
+  "customer_type",
+  "default_price_list"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_aqwu",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_orgl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Link",
+   "label": "Status",
+   "options": "Vehicles"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "task_1_section",
+   "fieldtype": "Section Break",
+   "label": "Task 1"
+  },
+  {
+   "fieldname": "table_hlwa",
+   "fieldtype": "Table",
+   "options": "Maintainance Type GRV"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "task_2_section",
+   "fieldtype": "Section Break",
+   "label": "Task 2"
+  },
+  {
+   "fieldname": "table_rmcw",
+   "fieldtype": "Table",
+   "options": "Maintainance Type GRV"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "task_3_section",
+   "fieldtype": "Section Break",
+   "label": "Task 3"
+  },
+  {
+   "fieldname": "table_mtpm",
+   "fieldtype": "Table",
+   "options": "Maintainance Type GRV"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "task_4_section",
+   "fieldtype": "Section Break",
+   "label": "Task 4"
+  },
+  {
+   "fieldname": "table_eptn",
+   "fieldtype": "Table",
+   "options": "Maintainance Type GRV"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "task_5_section",
+   "fieldtype": "Section Break",
+   "label": "Task 5"
+  },
+  {
+   "fieldname": "table_kujm",
+   "fieldtype": "Table",
+   "options": "Maintainance Type GRV"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "task_6_section",
+   "fieldtype": "Section Break",
+   "label": "Task 6"
+  },
+  {
+   "fieldname": "table_yehe",
+   "fieldtype": "Table",
+   "options": "Maintainance Type GRV"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "task_7_section",
+   "fieldtype": "Section Break",
+   "label": "Task 7"
+  },
+  {
+   "fieldname": "table_cssa",
+   "fieldtype": "Table",
+   "options": "Maintainance Type GRV"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "task_8_section",
+   "fieldtype": "Section Break",
+   "label": "Task 8"
+  },
+  {
+   "fieldname": "table_degn",
+   "fieldtype": "Table",
+   "options": "Maintainance Type GRV"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "task_9_section",
+   "fieldtype": "Section Break",
+   "label": "Task 9"
+  },
+  {
+   "fieldname": "table_xegg",
+   "fieldtype": "Table",
+   "options": "Maintainance Type GRV"
+  },
+  {
+   "fieldname": "vehicle_tab",
+   "fieldtype": "Tab Break",
+   "label": "Vehicle"
+  },
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "color",
+   "fieldtype": "Data",
+   "label": "Color"
+  },
+  {
+   "fieldname": "model",
+   "fieldtype": "Link",
+   "label": "Model",
+   "options": "Model"
+  },
+  {
+   "fieldname": "engine_number",
+   "fieldtype": "Link",
+   "in_filter": 1,
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Engine Number",
+   "options": "Engine Number"
+  },
+  {
+   "fieldname": "fuel",
+   "fieldtype": "Select",
+   "label": "Fuel",
+   "options": "Petrol\nDiesel"
+  },
+  {
+   "fieldname": "make",
+   "fieldtype": "Link",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Make",
+   "options": "Vehicle Make"
+  },
+  {
+   "fieldname": "reg_number",
+   "fieldtype": "Link",
+   "in_filter": 1,
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Reg Number",
+   "options": "Reg Number"
+  },
+  {
+   "fieldname": "speedometer",
+   "fieldtype": "Float",
+   "label": "Speedometer"
+  },
+  {
+   "fieldname": "body_type",
+   "fieldtype": "Data",
+   "label": "Body Type"
+  },
+  {
+   "fieldname": "chasis",
+   "fieldtype": "Link",
+   "label": "Chasis",
+   "options": "VN Chasis"
+  },
+  {
+   "fieldname": "year_model",
+   "fieldtype": "Data",
+   "in_filter": 1,
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Year Model"
+  },
+  {
+   "fieldname": "column_break_svfi",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_xtli",
+   "fieldtype": "Column Break"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "task_10_section",
+   "fieldtype": "Section Break",
+   "label": "Task 10"
+  },
+  {
+   "fieldname": "table_ntyi",
+   "fieldtype": "Table",
+   "options": "Maintainance Type GRV"
+  },
+  {
+   "fieldname": "totals_section",
+   "fieldtype": "Section Break",
+   "label": "Totals"
+  },
+  {
+   "fieldname": "total_amount",
+   "fieldtype": "Float",
+   "label": "Total Amount "
+  },
+  {
+   "fieldname": "column_break_ngzj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_quantity",
+   "fieldtype": "Float",
+   "label": "Total Quantity "
+  },
+  {
+   "fieldname": "task1_total_amount",
+   "fieldtype": "Float",
+   "label": "Task1 Total Amount"
+  },
+  {
+   "fieldname": "task1_total_qty",
+   "fieldtype": "Float",
+   "label": "Task1 Total Qty"
+  },
+  {
+   "fieldname": "task1_name",
+   "fieldtype": "Data",
+   "label": "Task1 Name"
+  },
+  {
+   "fieldname": "task2_name",
+   "fieldtype": "Data",
+   "label": "Task2 Name"
+  },
+  {
+   "fieldname": "task2_total",
+   "fieldtype": "Float",
+   "label": "Task2 Total "
+  },
+  {
+   "fieldname": "task2_total_qty",
+   "fieldtype": "Float",
+   "label": "Task2 Total Qty "
+  },
+  {
+   "fieldname": "customer_tab",
+   "fieldtype": "Tab Break",
+   "label": "Customer"
+  },
+  {
+   "fieldname": "first_name",
+   "fieldtype": "Data",
+   "label": "First Name"
+  },
+  {
+   "fieldname": "surname",
+   "fieldtype": "Data",
+   "label": "Surname"
+  },
+  {
+   "fieldname": "customer_type",
+   "fieldtype": "Select",
+   "label": "Customer Type",
+   "options": "Individual\nCompany"
+  },
+  {
+   "fieldname": "default_price_list",
+   "fieldtype": "Link",
+   "label": "Default Price List",
+   "options": "Price List"
+  },
+  {
+   "fieldname": "column_break_sybl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "task3_name",
+   "fieldtype": "Data",
+   "label": "Task3 Name"
+  },
+  {
+   "fieldname": "task3_total",
+   "fieldtype": "Float",
+   "label": "Task3 Total "
+  },
+  {
+   "fieldname": "task3_total_qty",
+   "fieldtype": "Float",
+   "label": "Task3 Total Qty "
+  },
+  {
+   "fieldname": "task4_name",
+   "fieldtype": "Data",
+   "label": "Task4 Name "
+  },
+  {
+   "fieldname": "task4_total_qty",
+   "fieldtype": "Float",
+   "label": "Task4 Total Qty "
+  },
+  {
+   "fieldname": "task4_total",
+   "fieldtype": "Float",
+   "label": "Task4 Total  "
+  },
+  {
+   "fieldname": "task5_name",
+   "fieldtype": "Data",
+   "label": "Task5 Name  "
+  },
+  {
+   "fieldname": "task5_total_qty",
+   "fieldtype": "Float",
+   "label": "Task5 Total Qty  "
+  },
+  {
+   "fieldname": "task5_total",
+   "fieldtype": "Float",
+   "label": "Task5 Total   "
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-03-18 15:28:32.171729",
+ "modified_by": "Administrator",
+ "module": "Vehicle",
+ "name": "Job Quote",
+ "naming_rule": "Autoincrement",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
