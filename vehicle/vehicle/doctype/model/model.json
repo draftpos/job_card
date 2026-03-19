@@ -22,7 +22,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-03-18 08:29:25.558478",
+ "modified": "2026-03-19 14:18:14.671412",
  "modified_by": "Administrator",
  "module": "Vehicle",
  "name": "Model",
@@ -44,7 +44,9 @@
  ],
  "row_format": "Dynamic",
  "rows_threshold_for_grid_search": 20,
+ "show_title_field_in_link": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "title_field": "model"
 }

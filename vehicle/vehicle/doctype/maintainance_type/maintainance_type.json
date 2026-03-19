@@ -6,8 +6,8 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "task",
-  "task_status",
+  "item_code",
+  "item_name",
   "description",
   "qty",
   "column_break_ldwj",
@@ -16,27 +16,6 @@
   "mantainance_type"
  ],
  "fields": [
-  {
-   "fieldname": "task",
-   "fieldtype": "Data",
-   "in_filter": 1,
-   "in_global_search": 1,
-   "in_list_view": 1,
-   "in_preview": 1,
-   "in_standard_filter": 1,
-   "label": "Item Code"
-  },
-  {
-   "fieldname": "task_status",
-   "fieldtype": "Link",
-   "in_filter": 1,
-   "in_global_search": 1,
-   "in_list_view": 1,
-   "in_preview": 1,
-   "in_standard_filter": 1,
-   "label": "Item Name",
-   "options": "Task Status"
-  },
   {
    "fieldname": "description",
    "fieldtype": "Data",
@@ -48,6 +27,7 @@
    "label": "Description"
   },
   {
+   "default": "1",
    "fieldname": "qty",
    "fieldtype": "Float",
    "in_filter": 1,
@@ -88,13 +68,35 @@
   {
    "fieldname": "column_break_ldwj",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "in_filter": 1,
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Item Code",
+   "options": "Item"
+  },
+  {
+   "fetch_from": "item_code.item_name",
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "in_filter": 1,
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Item Name"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-03-18 09:26:43.215999",
+ "modified": "2026-03-19 11:55:48.122725",
  "modified_by": "Administrator",
  "module": "Vehicle",
  "name": "Maintainance Type",

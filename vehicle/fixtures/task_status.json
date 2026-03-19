@@ -1,0 +1,30 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Task Status",
+  "modified": "2026-03-19 12:46:30.889194",
+  "name": "In Progress",
+  "status": "In Progress"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Task Status",
+  "modified": "2026-03-19 12:46:43.237619",
+  "name": "Waiting Parts",
+  "status": "Waiting Parts"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Task Status",
+  "modified": "2026-03-19 12:46:52.813128",
+  "name": "Completed",
+  "status": "Completed"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Task Status",
+  "modified": "2026-03-19 12:47:11.141669",
+  "name": "Delivered",
+  "status": "Delivered"
+ }
+]

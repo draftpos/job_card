@@ -24,39 +24,39 @@
   "status",
   "task_1_section",
   "task1_name",
-  "table_hlwa",
-  "task1_total_amount",
+  "table_1",
   "task1_total_qty",
+  "task1_total_amount",
   "task_2_section",
   "task2_name",
-  "table_rmcw",
-  "task2_total",
+  "table_2",
   "task2_total_qty",
+  "task2_total_amount",
   "task_3_section",
   "task3_name",
-  "table_mtpm",
-  "task3_total",
+  "table_3",
   "task3_total_qty",
+  "task3_total_amount",
   "task_4_section",
   "task4_name",
-  "table_eptn",
+  "table_4",
   "task4_total_qty",
-  "task4_total",
+  "task4_total_amount",
   "task_5_section",
   "task5_name",
-  "table_kujm",
+  "table_5",
   "task5_total_qty",
-  "task5_total",
+  "task5_total_amount",
   "task_6_section",
-  "table_yehe",
+  "table_6",
   "task_7_section",
-  "table_cssa",
+  "table_7",
   "task_8_section",
-  "table_degn",
+  "table_8",
   "task_9_section",
-  "table_xegg",
+  "table_9",
   "task_10_section",
-  "table_ntyi",
+  "table_10",
   "totals_section",
   "total_amount",
   "column_break_ngzj",
@@ -81,7 +81,7 @@
    "fieldname": "status",
    "fieldtype": "Link",
    "label": "Status",
-   "options": "Vehicles"
+   "options": "Task Status"
   },
   {
    "collapsible": 1,
@@ -90,20 +90,10 @@
    "label": "Task 1"
   },
   {
-   "fieldname": "table_hlwa",
-   "fieldtype": "Table",
-   "options": "Maintainance Type"
-  },
-  {
    "collapsible": 1,
    "fieldname": "task_2_section",
    "fieldtype": "Section Break",
    "label": "Task 2"
-  },
-  {
-   "fieldname": "table_rmcw",
-   "fieldtype": "Table",
-   "options": "Maintainance Type"
   },
   {
    "collapsible": 1,
@@ -112,20 +102,10 @@
    "label": "Task 3"
   },
   {
-   "fieldname": "table_mtpm",
-   "fieldtype": "Table",
-   "options": "Maintainance Type"
-  },
-  {
    "collapsible": 1,
    "fieldname": "task_4_section",
    "fieldtype": "Section Break",
    "label": "Task 4"
-  },
-  {
-   "fieldname": "table_eptn",
-   "fieldtype": "Table",
-   "options": "Maintainance Type"
   },
   {
    "collapsible": 1,
@@ -134,20 +114,10 @@
    "label": "Task 5"
   },
   {
-   "fieldname": "table_kujm",
-   "fieldtype": "Table",
-   "options": "Maintainance Type"
-  },
-  {
    "collapsible": 1,
    "fieldname": "task_6_section",
    "fieldtype": "Section Break",
    "label": "Task 6"
-  },
-  {
-   "fieldname": "table_yehe",
-   "fieldtype": "Table",
-   "options": "Maintainance Type"
   },
   {
    "collapsible": 1,
@@ -156,31 +126,16 @@
    "label": "Task 7"
   },
   {
-   "fieldname": "table_cssa",
-   "fieldtype": "Table",
-   "options": "Maintainance Type"
-  },
-  {
    "collapsible": 1,
    "fieldname": "task_8_section",
    "fieldtype": "Section Break",
    "label": "Task 8"
   },
   {
-   "fieldname": "table_degn",
-   "fieldtype": "Table",
-   "options": "Maintainance Type"
-  },
-  {
    "collapsible": 1,
    "fieldname": "task_9_section",
    "fieldtype": "Section Break",
    "label": "Task 9"
-  },
-  {
-   "fieldname": "table_xegg",
-   "fieldtype": "Table",
-   "options": "Maintainance Type"
   },
   {
    "fieldname": "vehicle_tab",
@@ -282,11 +237,6 @@
    "label": "Task 10"
   },
   {
-   "fieldname": "table_ntyi",
-   "fieldtype": "Table",
-   "options": "Maintainance Type"
-  },
-  {
    "fieldname": "totals_section",
    "fieldtype": "Section Break",
    "label": "Totals"
@@ -294,7 +244,8 @@
   {
    "fieldname": "total_amount",
    "fieldtype": "Float",
-   "label": "Total Amount "
+   "label": "Total Amount ",
+   "read_only": 1
   },
   {
    "fieldname": "column_break_ngzj",
@@ -303,17 +254,20 @@
   {
    "fieldname": "total_quantity",
    "fieldtype": "Float",
-   "label": "Total Quantity "
+   "label": "Total Quantity ",
+   "read_only": 1
   },
   {
    "fieldname": "task1_total_amount",
    "fieldtype": "Float",
-   "label": "Task1 Total Amount"
+   "label": "Task1 Total Amount",
+   "read_only": 1
   },
   {
    "fieldname": "task1_total_qty",
    "fieldtype": "Float",
-   "label": "Task1 Total Qty"
+   "label": "Task1 Total Qty",
+   "read_only": 1
   },
   {
    "fieldname": "task1_name",
@@ -326,14 +280,10 @@
    "label": "Task2 Name"
   },
   {
-   "fieldname": "task2_total",
-   "fieldtype": "Float",
-   "label": "Task2 Total "
-  },
-  {
    "fieldname": "task2_total_qty",
    "fieldtype": "Float",
-   "label": "Task2 Total Qty "
+   "label": "Task2 Total Qty ",
+   "read_only": 1
   },
   {
    "fieldname": "customer_tab",
@@ -343,24 +293,28 @@
   {
    "fieldname": "first_name",
    "fieldtype": "Data",
-   "label": "First Name"
+   "label": "First Name",
+   "reqd": 1
   },
   {
    "fieldname": "surname",
    "fieldtype": "Data",
-   "label": "Surname"
+   "label": "Surname",
+   "reqd": 1
   },
   {
    "fieldname": "customer_type",
    "fieldtype": "Select",
    "label": "Customer Type",
-   "options": "Individual\nCompany"
+   "options": "Individual\nCompany",
+   "reqd": 1
   },
   {
    "fieldname": "default_price_list",
    "fieldtype": "Link",
    "label": "Default Price List",
-   "options": "Price List"
+   "options": "Price List",
+   "reqd": 1
   },
   {
    "fieldname": "column_break_sybl",
@@ -372,14 +326,10 @@
    "label": "Task3 Name"
   },
   {
-   "fieldname": "task3_total",
-   "fieldtype": "Float",
-   "label": "Task3 Total "
-  },
-  {
    "fieldname": "task3_total_qty",
    "fieldtype": "Float",
-   "label": "Task3 Total Qty "
+   "label": "Task3 Total Qty ",
+   "read_only": 1
   },
   {
    "fieldname": "task4_name",
@@ -389,12 +339,8 @@
   {
    "fieldname": "task4_total_qty",
    "fieldtype": "Float",
-   "label": "Task4 Total Qty "
-  },
-  {
-   "fieldname": "task4_total",
-   "fieldtype": "Float",
-   "label": "Task4 Total  "
+   "label": "Task4 Total Qty ",
+   "read_only": 1
   },
   {
    "fieldname": "task5_name",
@@ -404,18 +350,88 @@
   {
    "fieldname": "task5_total_qty",
    "fieldtype": "Float",
-   "label": "Task5 Total Qty  "
+   "label": "Task5 Total Qty  ",
+   "read_only": 1
   },
   {
-   "fieldname": "task5_total",
+   "fieldname": "table_2",
+   "fieldtype": "Table",
+   "options": "Maintainance Type"
+  },
+  {
+   "fieldname": "table_3",
+   "fieldtype": "Table",
+   "options": "Maintainance Type"
+  },
+  {
+   "fieldname": "table_4",
+   "fieldtype": "Table",
+   "options": "Maintainance Type"
+  },
+  {
+   "fieldname": "table_5",
+   "fieldtype": "Table",
+   "options": "Maintainance Type"
+  },
+  {
+   "fieldname": "table_6",
+   "fieldtype": "Table",
+   "options": "Maintainance Type"
+  },
+  {
+   "fieldname": "table_7",
+   "fieldtype": "Table",
+   "options": "Maintainance Type"
+  },
+  {
+   "fieldname": "table_8",
+   "fieldtype": "Table",
+   "options": "Maintainance Type"
+  },
+  {
+   "fieldname": "table_9",
+   "fieldtype": "Table",
+   "options": "Maintainance Type"
+  },
+  {
+   "fieldname": "table_10",
+   "fieldtype": "Table",
+   "options": "Maintainance Type"
+  },
+  {
+   "fieldname": "table_1",
+   "fieldtype": "Table",
+   "options": "Maintainance Type"
+  },
+  {
+   "fieldname": "task2_total_amount",
    "fieldtype": "Float",
-   "label": "Task5 Total   "
+   "label": "Task2 Total  Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "task3_total_amount",
+   "fieldtype": "Float",
+   "label": "Task3 Total Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "task4_total_amount",
+   "fieldtype": "Float",
+   "label": "Task4 Total  Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "task5_total_amount",
+   "fieldtype": "Float",
+   "label": "Task5 Total   ",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-03-18 16:01:34.703539",
+ "modified": "2026-03-19 12:56:56.592177",
  "modified_by": "Administrator",
  "module": "Vehicle",
  "name": "Job Quote",
