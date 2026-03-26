@@ -250,5 +250,11 @@ app_license = "mit"
 fixtures = [
     {
         "dt": "Task Status"
+    },
+    {
+        "dt": "Workspace",
+        "filters": [
+            ["title", "=", "Vehicle Job Card"]
+        ]
     }
 ]
