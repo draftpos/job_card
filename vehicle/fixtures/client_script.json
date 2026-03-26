@@ -1,1 +1,112 @@
-[]
+[
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Job Quote",
+  "enabled": 1,
+  "modified": "2026-03-18 16:05:17.172692",
+  "module": "Vehicle",
+  "name": "Job Quote Dynamic Labels",
+  "script": "frappe.ui.form.on(\"Job Quote\", {\n    refresh(frm) {\n        update_all_task_labels(frm);\n    },\n\n    // listen to any task field change dynamically\n    task1_name(frm) { update_task_label(frm, 1); },\n    task2_name(frm) { update_task_label(frm, 2); },\n    task3_name(frm) { update_task_label(frm, 3); },\n    task4_name(frm) { update_task_label(frm, 4); },\n    task5_name(frm) { update_task_label(frm, 5); },\n});\n\n// loop through all tasks\nfunction update_all_task_labels(frm) {\n    for (let i = 1; i <= 5; i++) {\n        update_task_label(frm, i);\n    }\n}\n\nfunction update_task_label(frm, taskNum) {\n    let field_name = `task${taskNum}_name`;\n    let section_fieldname = `task_${taskNum}_section`;\n    let value = frm.doc[field_name] || `Task ${taskNum}`;\n    let label_text = `Task${taskNum} - ${value}`;\n\n    // Update metadata\n    frm.set_df_property(section_fieldname, \"label\", label_text);\n\n    // Force UI update without breaking arrow\n    setTimeout(() => {\n        let section = frm.fields_dict[section_fieldname];\n        if (section && section.wrapper) {\n            let header = $(section.wrapper).find(\".section-head\");\n\n            // Remove old text nodes\n            header.contents().filter(function() {\n                return this.nodeType === 3;\n            }).remove();\n\n            // Insert new label after the arrow\n            let arrow = header.find(\".caret\");\n            if (arrow.length) {\n                arrow.after(\" \" + label_text);\n            } else {\n                header.prepend(label_text + \" \");\n            }\n        }\n    }, 50);\n}",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "GRV",
+  "enabled": 1,
+  "modified": "2026-03-18 16:06:37.537906",
+  "module": "Vehicle",
+  "name": "GRV Dynamic Labels",
+  "script": "frappe.ui.form.on(\"GRV\", {\n    refresh(frm) {\n        update_all_task_labels(frm);\n    },\n\n    // listen to any task field change dynamically\n    task1_name(frm) { update_task_label(frm, 1); },\n    task2_name(frm) { update_task_label(frm, 2); },\n    task3_name(frm) { update_task_label(frm, 3); },\n    task4_name(frm) { update_task_label(frm, 4); },\n    task5_name(frm) { update_task_label(frm, 5); },\n});\n\n// loop through all tasks\nfunction update_all_task_labels(frm) {\n    for (let i = 1; i <= 5; i++) {\n        update_task_label(frm, i);\n    }\n}\n\nfunction update_task_label(frm, taskNum) {\n    let field_name = `task${taskNum}_name`;\n    let section_fieldname = `task_${taskNum}_section`;\n    let value = frm.doc[field_name] || `Task ${taskNum}`;\n    let label_text = `Task${taskNum} - ${value}`;\n\n    // Update metadata\n    frm.set_df_property(section_fieldname, \"label\", label_text);\n\n    // Force UI update without breaking arrow\n    setTimeout(() => {\n        let section = frm.fields_dict[section_fieldname];\n        if (section && section.wrapper) {\n            let header = $(section.wrapper).find(\".section-head\");\n\n            // Remove old text nodes\n            header.contents().filter(function() {\n                return this.nodeType === 3;\n            }).remove();\n\n            // Insert new label after the arrow\n            let arrow = header.find(\".caret\");\n            if (arrow.length) {\n                arrow.after(\" \" + label_text);\n            } else {\n                header.prepend(label_text + \" \");\n            }\n        }\n    }, 50);\n}",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Vehicle Purchase Order",
+  "enabled": 1,
+  "modified": "2026-03-18 16:20:13.730746",
+  "module": "Vehicle",
+  "name": "Vehicle Purchase Order Dynamic Labels",
+  "script": "frappe.ui.form.on(\"Vehicle Purchase Order\", {\n    refresh(frm) {\n        update_all_task_labels(frm);\n    },\n\n    // listen to any task field change dynamically\n    task1_name(frm) { update_task_label(frm, 1); },\n    task2_name(frm) { update_task_label(frm, 2); },\n    task3_name(frm) { update_task_label(frm, 3); },\n    task4_name(frm) { update_task_label(frm, 4); },\n    task5_name(frm) { update_task_label(frm, 5); },\n});\n\n// loop through all tasks\nfunction update_all_task_labels(frm) {\n    for (let i = 1; i <= 5; i++) {\n        update_task_label(frm, i);\n    }\n}\n\nfunction update_task_label(frm, taskNum) {\n    let field_name = `task${taskNum}_name`;\n    let section_fieldname = `task_${taskNum}_section`;\n    let value = frm.doc[field_name] || `Task ${taskNum}`;\n    let label_text = `Task${taskNum} - ${value}`;\n\n    // Update metadata\n    frm.set_df_property(section_fieldname, \"label\", label_text);\n\n    // Force UI update without breaking arrow\n    setTimeout(() => {\n        let section = frm.fields_dict[section_fieldname];\n        if (section && section.wrapper) {\n            let header = $(section.wrapper).find(\".section-head\");\n\n            // Remove old text nodes\n            header.contents().filter(function() {\n                return this.nodeType === 3;\n            }).remove();\n\n            // Insert new label after the arrow\n            let arrow = header.find(\".caret\");\n            if (arrow.length) {\n                arrow.after(\" \" + label_text);\n            } else {\n                header.prepend(label_text + \" \");\n            }\n        }\n    }, 50);\n}",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Vehicle Purchase Order",
+  "enabled": 1,
+  "modified": "2026-03-19 15:14:57.427189",
+  "module": "Vehicle",
+  "name": "create purchase order from job quote",
+  "script": "frappe.ui.form.on(\"Vehicle Purchase Order\", {\n    job_quote(frm) {\n        if (!frm.doc.job_quote) return;\n\n        frappe.call({\n            method: \"vehicle.vehicle.doctype.vehicle_purchase_order.vehicle_purchase_order.get_job_quote\",\n            args: {\n                source_name: frm.doc.job_quote\n            },\n            callback: function(r) {\n                if (r.message) {\n                    // clear all tables first\n                    for (let i = 1; i <= 10; i++) {\n                        frm.clear_table(`table_${i}`);\n                    }\n\n                    // set all values from server\n                    frm.set_value(r.message);\n\n                    frm.refresh();\n                }\n            }\n        });\n    }\n});",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "GRV",
+  "enabled": 1,
+  "modified": "2026-03-26 16:13:21.583809",
+  "module": "Vehicle",
+  "name": "create grv order from job quote",
+  "script": "frappe.ui.form.on(\"GRV\", {\n    grv(frm) {\n        if (!frm.doc.purchase_order) return;\n\n        frappe.call({\n            method: \"vehicle.vehicle.doctype.grv.grv.get_vehicle_order\",\n            args: {\n                source_name: frm.doc.purchase_order\n            },\n            callback: ({ message }) => {\n                if (!message) return;\n\n                // 🔹 1. Set simple fields (EXCLUDE purchase_order)\n                let simple_fields = {};\n\n                Object.keys(message).forEach(key => {\n                    if (!key.startsWith(\"table_\") && key !== \"purchase_order\") {\n                        simple_fields[key] = message[key];\n                    }\n                });\n\n                frm.set_value(simple_fields);\n\n                // 🔹 2. Populate child tables\n                for (let i = 1; i <= 10; i++) {\n                    let table_name = `table_${i}`;\n                    frm.clear_table(table_name);\n\n                    (message[table_name] || []).forEach(row => {\n                        let child = frm.add_child(table_name);\n\n                        child.item_code = row.item_code ? String(row.item_code) : \"\";\n                        child.item_name = row.item_name || \"\";\n                        child.description = row.description || \"\";\n                        child.qty = row.qty || 0;\n                        child.rate = row.rate || 0;\n                        child.balance_qty = row.balance_qty || 0;\n                        child.amount = row.amount || 0;\n                        child.supplier = row.supplier || 0;\n                    });\n\n                    frm.refresh_field(table_name);\n                }\n\n                frm.refresh();\n            }\n        });\n    },\n\n    purchase_order(frm) {\n        if (frm.doc.purchase_order) {\n            frm.trigger(\"grv\");\n        }\n    }\n});",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "GRV",
+  "enabled": 1,
+  "modified": "2026-03-26 09:51:45.147298",
+  "module": "Vehicle",
+  "name": "grv item add qty",
+  "script": "frappe.ui.form.on(\"Maintainance Type GRV\", {\n    add_qty: function(frm, cdt, cdn) {\n        const row = locals[cdt][cdn];\n        if (!row) return;\n\n        // 🔹 Check balance BEFORE creating dialog\n        if (!row.balance_qty || row.balance_qty <= 0) {\n            frappe.msgprint({\n                title: __('No balance left'),\n                message: __('This item has no remaining balance.'),\n                indicator: 'red'\n            });\n            return;\n        }\n\n        const d = new frappe.ui.Dialog({\n            title: __(\"Edit Item\"),\n            fields: [\n                {\n                    label: \"Item Code\",\n                    fieldname: \"item_code\",\n                    fieldtype: \"Data\",\n                    default: row.item_code,\n                    read_only: 1\n                },\n                {\n                    label: \"Balance Left\",\n                    fieldname: \"balance_qty\",\n                    fieldtype: \"Float\",\n                    default: row.balance_qty,\n                    read_only: 1\n                },\n                {\n                    label: \"Qty to Add\",\n                    fieldname: \"qty\",\n                    fieldtype: \"Float\",\n                    default: row.qty || 1,\n                    description: __(\"Cannot exceed balance left\")\n                }\n            ],\n            primary_action_label: \"Save and Submit\",\n            primary_action(values) {\n                if (values.qty > row.balance_qty) {\n                    frappe.msgprint({\n                        title: __('Invalid Quantity'),\n                        message: __('Qty cannot exceed balance left! ⚠️'),\n                        indicator: 'red'\n                    });\n                    return;\n                }\n\n                frappe.call({\n                    method: \"vehicle.vehicle.doctype.grv.grv.process_grv_item\",\n                    args: {\n                        item_code: row.item_code,\n                        qty: values.qty,\n                        purchase_order: frm.doc.purchase_order\n                    },\n                    callback: function(r) {\n                        if (r.message && r.message.success) {\n                            // Update child row locally\n                            const new_balance = row.balance_qty - values.qty;\n                            const new_received = (row.received_qty || 0) + values.qty;\n\n                            frappe.model.set_value(cdt, cdn, \"balance_qty\", new_balance);\n                            frappe.model.set_value(cdt, cdn, \"received_qty\", new_received);\n                            frappe.model.set_value(cdt, cdn, \"submitted\", 1);\n\n                            frappe.msgprint({\n                                title: __('Success'),\n                                message: __('Row updated, received qty increased and balance decreased 🔥'),\n                                indicator: 'green'\n                            });\n\n                            // 🔹 Blur focused element then hide dialog\n                            $(document.activeElement).blur();\n                            d.hide();\n\n                            // 🔹 Auto-save the whole GRV document\n                            frm.save_or_update();\n                        } else {\n                            frappe.msgprint({\n                                title: __('Error'),\n                                message: __('Error processing item: ') + (r.message?.msg || ''),\n                                indicator: 'red'\n                            });\n                            $(document.activeElement).blur();\n                            d.hide();\n                        }\n                    }\n                });\n            }\n        });\n\n        d.show();\n    }\n});",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Job Quote",
+  "enabled": 1,
+  "modified": "2026-03-23 17:15:07.980771",
+  "module": "Vehicle",
+  "name": "calculate amounts on qty change",
+  "script": "// Parent form (Job Quote)\nfrappe.ui.form.on('Job Quote', {\n\trefresh(frm) {\n\t\t// your normal stuff here\n\t}\n});\n\n\n// Child table logic (THIS is what drives the calculation)\nfrappe.ui.form.on('Maintainance Type', {\n\tqty: function(frm, cdt, cdn) {\n\t\tcalculate_amount(frm, cdt, cdn);\n\t},\n\trate: function(frm, cdt, cdn) {\n\t\tcalculate_amount(frm, cdt, cdn);\n\t}\n});\n\n\nfunction calculate_amount(frm, cdt, cdn) {\n\tlet row = locals[cdt][cdn];\n\trow.amount = (row.qty || 0) * (row.rate || 0);\n\n\t// refresh ALL your tables (since you have many)\n\tfor (let i = 1; i <= 10; i++) {\n\t\tfrm.refresh_field(`table_${i}`);\n\t}\n}",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "GRV",
+  "enabled": 1,
+  "modified": "2026-03-25 15:49:40.436674",
+  "module": "Vehicle",
+  "name": "grv child table calculations",
+  "script": "// Parent form\nfrappe.ui.form.on('GRV', {\n\trefresh(frm) {\n\t\t// your normal stuff\n\t}\n});\n\n\n// Child table logic (Maintainance Type GRV)\nfrappe.ui.form.on('Maintainance Type GRV', {\n\n\tqty(frm, cdt, cdn) {\n\t\tcalculate_balance(frm, cdt, cdn);\n\t},\n\n\treceived_qty(frm, cdt, cdn) {\n\t\tcalculate_balance(frm, cdt, cdn);\n\t},\n\n\tadd_qty(frm, cdt, cdn) {\n\t\tlet row = locals[cdt][cdn];\n\n\t\t// 🚫 no balance\n\t\tif ((row.balance_qty || 0) <= 0) {\n\t\t\tfrappe.msgprint(\"This item has no remaining balance.\");\n\t\t\tfrappe.model.set_value(cdt, cdn, \"add_qty\", 0);\n\t\t\treturn;\n\t\t}\n\n\t\t// 🚫 over-add\n\t\tif ((row.add_qty || 0) > (row.balance_qty || 0)) {\n\t\t\tfrappe.msgprint(\"Cannot add more than remaining balance.\");\n\t\t\tfrappe.model.set_value(cdt, cdn, \"add_qty\", 0);\n\t\t\treturn;\n\t\t}\n\n\t\t// 🔥 update received qty (like Sales Invoice behavior)\n\t\tlet new_received = (row.received_qty || 0) + (row.add_qty || 0);\n\n\t\tfrappe.model.set_value(cdt, cdn, \"received_qty\", new_received);\n\n\t\t// reset add_qty\n\t\tfrappe.model.set_value(cdt, cdn, \"add_qty\", 0);\n\t}\n});\n\n\n// 🔧 Shared function\nfunction calculate_balance(frm, cdt, cdn) {\n\tlet row = locals[cdt][cdn];\n\n\tlet ordered = row.qty || 0;\n\tlet received = row.received_qty || 0;\n\n\tlet balance = ordered - received;\n\n\tif (balance < 0) balance = 0;\n\n\trow.balance_qty = balance;\n\n\t// 🔥 refresh ALL tables (like your pattern)\n\tfor (let i = 1; i <= 10; i++) {\n\t\tfrm.refresh_field(`table_${i}`);\n\t}\n}",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Part Issue",
+  "enabled": 1,
+  "modified": "2026-03-26 10:10:33.316826",
+  "module": "Vehicle",
+  "name": "create issue from job quote",
+  "script": "frappe.ui.form.on(\"Part Issue\", {\n    job_quote(frm) {\n        if (!frm.doc.job_quote) return;\n\n        frappe.call({\n            method: \"vehicle.vehicle.doctype.part_issue.part_issue.get_job_quote\",\n            args: {\n                source_name: frm.doc.job_quote\n            },\n            callback: function(r) {\n                if (r.message) {\n                    // clear all tables first\n                    for (let i = 1; i <= 10; i++) {\n                        frm.clear_table(`table_${i}`);\n                    }\n\n                    // set all values from server\n                    frm.set_value(r.message);\n\n                    frm.refresh();\n                }\n            }\n        });\n    }\n});",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Part Issue",
+  "enabled": 1,
+  "modified": "2026-03-26 10:12:48.827384",
+  "module": "Vehicle",
+  "name": "Dynamic copy of fields",
+  "script": "frappe.ui.form.on(\"Part Issue\", {\n    refresh(frm) {\n        update_all_task_labels(frm);\n    },\n\n    // listen to any task field change dynamically\n    task1_name(frm) { update_task_label(frm, 1); },\n    task2_name(frm) { update_task_label(frm, 2); },\n    task3_name(frm) { update_task_label(frm, 3); },\n    task4_name(frm) { update_task_label(frm, 4); },\n    task5_name(frm) { update_task_label(frm, 5); },\n});\n\n// loop through all tasks\nfunction update_all_task_labels(frm) {\n    for (let i = 1; i <= 5; i++) {\n        update_task_label(frm, i);\n    }\n}\n\nfunction update_task_label(frm, taskNum) {\n    let field_name = `task${taskNum}_name`;\n    let section_fieldname = `task_${taskNum}_section`;\n    let value = frm.doc[field_name] || `Task ${taskNum}`;\n    let label_text = `Task${taskNum} - ${value}`;\n\n    // Update metadata\n    frm.set_df_property(section_fieldname, \"label\", label_text);\n\n    // Force UI update without breaking arrow\n    setTimeout(() => {\n        let section = frm.fields_dict[section_fieldname];\n        if (section && section.wrapper) {\n            let header = $(section.wrapper).find(\".section-head\");\n\n            // Remove old text nodes\n            header.contents().filter(function() {\n                return this.nodeType === 3;\n            }).remove();\n\n            // Insert new label after the arrow\n            let arrow = header.find(\".caret\");\n            if (arrow.length) {\n                arrow.after(\" \" + label_text);\n            } else {\n                header.prepend(label_text + \" \");\n            }\n        }\n    }, 50);\n}",
+  "view": "Form"
+ }
+]

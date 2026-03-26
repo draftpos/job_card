@@ -260,7 +260,7 @@ fixtures = [
     {
         "dt": "Client Script",
         "filters": [
-            ["name", "in", ["Your Client Script Name 1", "Your Client Script Name 2"]]
+            ["module", "=", "Vehicle"]
         ]
     }
 ]
