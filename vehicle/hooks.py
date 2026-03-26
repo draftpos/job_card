@@ -256,5 +256,11 @@ fixtures = [
         "filters": [
             ["title", "=", "Vehicle Job Card"]
         ]
+    },
+    {
+        "dt": "Client Script",
+        "filters": [
+            ["name", "in", ["Your Client Script Name 1", "Your Client Script Name 2"]]
+        ]
     }
 ]
