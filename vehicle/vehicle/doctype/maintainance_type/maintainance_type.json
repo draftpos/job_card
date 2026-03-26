@@ -17,6 +17,7 @@
  ],
  "fields": [
   {
+   "columns": 1,
    "default": "1",
    "fieldname": "qty",
    "fieldtype": "Float",
@@ -27,11 +28,13 @@
    "label": "Qty"
   },
   {
+   "columns": 1,
    "fieldname": "rate",
    "fieldtype": "Float",
    "label": "Rate"
   },
   {
+   "columns": 1,
    "fieldname": "amount",
    "fieldtype": "Float",
    "label": "Amount"
@@ -69,6 +72,7 @@
    "label": "Item Name"
   },
   {
+   "columns": 2,
    "fetch_from": "item_code.item_name",
    "fieldname": "description",
    "fieldtype": "Data",
@@ -79,7 +83,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-03-26 10:30:04.442881",
+ "modified": "2026-03-26 22:56:36.994362",
  "modified_by": "Administrator",
  "module": "Vehicle",
  "name": "Maintainance Type",
