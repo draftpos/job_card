@@ -82,7 +82,6 @@
   },
   {
    "columns": 2,
-   "fetch_from": "item_code.item_name",
    "fieldname": "description",
    "fieldtype": "Data",
    "in_list_view": 1,
@@ -95,7 +94,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-03-26 23:16:58.623941",
+ "modified": "2026-03-26 23:21:06.905684",
  "modified_by": "Administrator",
  "module": "Vehicle",
  "name": "Maintainance Type",
