@@ -10,6 +10,7 @@
   "column_break_orgl",
   "naming_series",
   "job_quote",
+  "sales_invoice",
   "column_break_pspw",
   "status",
   "task_1_section",
@@ -64,7 +65,11 @@
   "column_break_xtli",
   "speedometer",
   "body_type",
-  "chasis"
+  "chasis",
+  "customer_tab",
+  "customer",
+  "column_break_lcww",
+  "customer_type"
  ],
  "fields": [
   {
@@ -427,13 +432,40 @@
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
+  },
+  {
+   "fieldname": "customer_tab",
+   "fieldtype": "Tab Break",
+   "label": "Customer"
+  },
+  {
+   "fieldname": "column_break_lcww",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "customer_type",
+   "fieldtype": "Select",
+   "label": "Customer Type",
+   "options": "Individual\nCompany"
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer Name",
+   "options": "Customer"
+  },
+  {
+   "fieldname": "sales_invoice",
+   "fieldtype": "Link",
+   "label": "Sales Invoice",
+   "options": "Sales Invoice"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-03-26 10:08:00.994110",
+ "modified": "2026-03-26 16:58:29.382224",
  "modified_by": "Administrator",
  "module": "Vehicle",
  "name": "Part Issue",
