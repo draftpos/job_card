@@ -1,6 +1,6 @@
 {
  "actions": [],
- "autoname": "autoincrement",
+ "autoname": "naming_series:",
  "creation": "2026-03-19 15:04:25.350788",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -8,10 +8,12 @@
   "details_tab",
   "section_break_aqwu",
   "column_break_orgl",
+  "naming_series",
   "job_quote",
   "supplier",
   "column_break_pspw",
   "status",
+  "purchase_order",
   "task_1_section",
   "task1_name",
   "table_1",
@@ -65,11 +67,9 @@
   "body_type",
   "chasis",
   "customer_tab",
-  "first_name",
-  "surname",
+  "customer",
   "column_break_sybl",
   "customer_type",
-  "default_price_list",
   "amended_from"
  ],
  "fields": [
@@ -403,18 +403,6 @@
    "label": "Customer"
   },
   {
-   "fieldname": "first_name",
-   "fieldtype": "Data",
-   "label": "First Name",
-   "reqd": 1
-  },
-  {
-   "fieldname": "surname",
-   "fieldtype": "Data",
-   "label": "Surname",
-   "reqd": 1
-  },
-  {
    "fieldname": "column_break_sybl",
    "fieldtype": "Column Break"
   },
@@ -423,13 +411,6 @@
    "fieldtype": "Select",
    "label": "Customer Type",
    "options": "Individual\nCompany",
-   "reqd": 1
-  },
-  {
-   "fieldname": "default_price_list",
-   "fieldtype": "Link",
-   "label": "Default Price List",
-   "options": "Price List",
    "reqd": 1
   },
   {
@@ -459,17 +440,36 @@
    "label": "Supplier",
    "options": "Supplier",
    "reqd": 1
+  },
+  {
+   "fieldname": "purchase_order",
+   "fieldtype": "Link",
+   "label": "Puchase Order",
+   "options": "Purchase Order"
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer Name",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Data",
+   "label": "Naming Series",
+   "options": "VPO-.YYYY.-."
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-03-19 15:23:58.044536",
+ "modified": "2026-03-25 15:38:30.920344",
  "modified_by": "Administrator",
  "module": "Vehicle",
  "name": "Vehicle Purchase Order",
- "naming_rule": "Autoincrement",
+ "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {

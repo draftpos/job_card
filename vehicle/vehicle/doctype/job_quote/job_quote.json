@@ -1,11 +1,12 @@
 {
  "actions": [],
- "autoname": "autoincrement",
+ "autoname": "naming_series:",
  "creation": "2026-03-18 08:58:47.321169",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "vehicle_tab",
+  "naming_series",
   "color",
   "model",
   "engine_number",
@@ -22,11 +23,15 @@
   "section_break_aqwu",
   "column_break_orgl",
   "status",
+  "quotation",
+  "column_break_akth",
+  "total_amount",
+  "total_quantity",
   "task_1_section",
   "task1_name",
   "table_1",
-  "task1_total_qty",
   "task1_total_amount",
+  "task1_total_qty",
   "task_2_section",
   "task2_name",
   "table_2",
@@ -57,16 +62,11 @@
   "table_9",
   "task_10_section",
   "table_10",
-  "totals_section",
-  "total_amount",
-  "column_break_ngzj",
-  "total_quantity",
   "customer_tab",
-  "first_name",
-  "surname",
+  "customer",
   "column_break_sybl",
   "customer_type",
-  "default_price_list"
+  "amended_from"
  ],
  "fields": [
   {
@@ -78,6 +78,7 @@
    "fieldtype": "Column Break"
   },
   {
+   "default": "Quotation",
    "fieldname": "status",
    "fieldtype": "Link",
    "label": "Status",
@@ -150,13 +151,15 @@
   {
    "fieldname": "color",
    "fieldtype": "Data",
-   "label": "Color"
+   "label": "Color",
+   "reqd": 1
   },
   {
    "fieldname": "model",
    "fieldtype": "Link",
    "label": "Model",
-   "options": "Model"
+   "options": "Model",
+   "reqd": 1
   },
   {
    "fieldname": "engine_number",
@@ -167,13 +170,15 @@
    "in_preview": 1,
    "in_standard_filter": 1,
    "label": "Engine Number",
-   "options": "Engine Number"
+   "options": "Engine Number",
+   "reqd": 1
   },
   {
    "fieldname": "fuel",
    "fieldtype": "Select",
    "label": "Fuel",
-   "options": "Petrol\nDiesel"
+   "options": "Petrol\nDiesel",
+   "reqd": 1
   },
   {
    "fieldname": "make",
@@ -183,7 +188,8 @@
    "in_preview": 1,
    "in_standard_filter": 1,
    "label": "Make",
-   "options": "Vehicle Make"
+   "options": "Vehicle Make",
+   "reqd": 1
   },
   {
    "fieldname": "reg_number",
@@ -194,7 +200,8 @@
    "in_preview": 1,
    "in_standard_filter": 1,
    "label": "Reg Number",
-   "options": "Reg Number"
+   "options": "Reg Number",
+   "reqd": 1
   },
   {
    "fieldname": "speedometer",
@@ -204,13 +211,15 @@
   {
    "fieldname": "body_type",
    "fieldtype": "Data",
-   "label": "Body Type"
+   "label": "Body Type",
+   "reqd": 1
   },
   {
    "fieldname": "chasis",
    "fieldtype": "Link",
    "label": "Chasis",
-   "options": "VN Chasis"
+   "options": "VN Chasis",
+   "reqd": 1
   },
   {
    "fieldname": "year_model",
@@ -220,7 +229,8 @@
    "in_list_view": 1,
    "in_preview": 1,
    "in_standard_filter": 1,
-   "label": "Year Model"
+   "label": "Year Model",
+   "reqd": 1
   },
   {
    "fieldname": "column_break_svfi",
@@ -237,19 +247,10 @@
    "label": "Task 10"
   },
   {
-   "fieldname": "totals_section",
-   "fieldtype": "Section Break",
-   "label": "Totals"
-  },
-  {
    "fieldname": "total_amount",
    "fieldtype": "Float",
    "label": "Total Amount ",
    "read_only": 1
-  },
-  {
-   "fieldname": "column_break_ngzj",
-   "fieldtype": "Column Break"
   },
   {
    "fieldname": "total_quantity",
@@ -291,29 +292,10 @@
    "label": "Customer"
   },
   {
-   "fieldname": "first_name",
-   "fieldtype": "Data",
-   "label": "First Name",
-   "reqd": 1
-  },
-  {
-   "fieldname": "surname",
-   "fieldtype": "Data",
-   "label": "Surname",
-   "reqd": 1
-  },
-  {
    "fieldname": "customer_type",
    "fieldtype": "Select",
    "label": "Customer Type",
    "options": "Individual\nCompany",
-   "reqd": 1
-  },
-  {
-   "fieldname": "default_price_list",
-   "fieldtype": "Link",
-   "label": "Default Price List",
-   "options": "Price List",
    "reqd": 1
   },
   {
@@ -399,6 +381,7 @@
    "options": "Maintainance Type"
   },
   {
+   "columns": 10,
    "fieldname": "table_1",
    "fieldtype": "Table",
    "options": "Maintainance Type"
@@ -426,16 +409,50 @@
    "fieldtype": "Float",
    "label": "Task5 Total   ",
    "read_only": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Job Quote",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "column_break_akth",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "quotation",
+   "fieldtype": "Link",
+   "label": "Quotation",
+   "options": "Quotation"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Data",
+   "label": "Naming Series",
+   "options": "JQ-.YYYY.-."
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer Name",
+   "options": "Customer",
+   "reqd": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
+ "is_submittable": 1,
  "links": [],
- "modified": "2026-03-19 12:56:56.592177",
+ "modified": "2026-03-25 12:59:12.663783",
  "modified_by": "Administrator",
  "module": "Vehicle",
  "name": "Job Quote",
- "naming_rule": "Autoincrement",
+ "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {

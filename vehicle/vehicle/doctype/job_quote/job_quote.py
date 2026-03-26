@@ -1,6 +1,7 @@
 # Copyright (c) 2026, munyaradzi chirove and contributors
 # For license information, please see license.txt
-
+import frappe
+from frappe.utils import nowdate, flt
 from frappe.model.document import Document
 
 class JobQuote(Document):
@@ -10,7 +11,7 @@ class JobQuote(Document):
 		total_qty = 0
 		for row in getattr(self, child_table_fieldname, []):
 			# default qty to 1 if empty
-			if not row.qty:
+			if row.qty is None:
 				row.qty = 1
 
 			# calculate amount
@@ -35,3 +36,64 @@ class JobQuote(Document):
 		# now consolidate all tables into grand totals
 		self.total_amount = sum(getattr(self, f"task{i}_total_amount", 0) for i in range(1, 11))
 		self.total_quantity = sum(getattr(self, f"task{i}_total_qty", 0) for i in range(1, 11))
+		
+	def on_submit(self):
+			self.create_sales_quotation()
+				
+	from frappe.utils import nowdate, flt
+
+	def create_sales_quotation(self):
+		try:
+			qt = frappe.new_doc("Quotation")
+			# qt.company = self.company or frappe.defaults.get_defaults().company
+			qt.naming_series = "SAL-QTN-.YYYY.-"
+			qt.name = None
+			qt.quotation_to = "Customer"
+			qt.party_name = self.customer
+			qt.transaction_date = nowdate()
+
+			items_map = {}
+
+			for i in range(1, 11):
+				table_field = f"table_{i}"
+				rows = getattr(self, table_field, [])
+
+				for row in rows:
+					if not row.item_code:
+						continue
+
+					qty = flt(row.qty) if row.qty is not None else 1
+					rate = flt(row.rate)
+
+					key = (row.item_code, rate)
+
+					if key not in items_map:
+						items_map[key] = {
+							"item_code": row.item_code,
+							"qty": 0,
+							"rate": rate,
+							"description": row.description
+						}
+
+					items_map[key]["qty"] += qty
+
+			# 🚨 No items check
+			if not items_map:
+				frappe.throw("Cannot create Quotation: No items found in tables.")
+
+			# 📦 Append aggregated items
+			for item in items_map.values():
+				qt.append("items", item)
+
+			qt.set_missing_values()
+			qt.calculate_taxes_and_totals()
+			qt.insert(ignore_permissions=True)
+
+			# 🔗 Link back
+			self.db_set("quotation", qt.name)
+
+			frappe.msgprint(f"Quotation <b>{qt.name}</b> created successfully", alert=True)
+
+		except Exception as e:
+			frappe.log_error(frappe.get_traceback(), "Job Quote Conversion Error")
+			frappe.throw(f"Error creating quotation: {str(e)}")
