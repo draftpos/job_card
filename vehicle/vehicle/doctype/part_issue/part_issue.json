@@ -1,7 +1,7 @@
 {
  "actions": [],
  "autoname": "naming_series:",
- "creation": "2026-03-19 16:33:07.479748",
+ "creation": "2026-03-26 09:55:44.676018",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
@@ -9,14 +9,9 @@
   "section_break_aqwu",
   "column_break_orgl",
   "naming_series",
-  "supplier",
-  "purchase_order",
   "job_quote",
   "column_break_pspw",
   "status",
-  "total_amount",
-  "total_quantity",
-  "purchase_invoice",
   "task_1_section",
   "task1_name",
   "table_1",
@@ -52,6 +47,10 @@
   "table_9",
   "task_10_section",
   "table_10",
+  "totals_section",
+  "total_amount",
+  "column_break_ngzj",
+  "total_quantity",
   "vehicle_tab",
   "color",
   "model",
@@ -82,9 +81,14 @@
    "fieldtype": "Column Break"
   },
   {
-   "fetch_from": "purchase_order.job_quote",
-   "fieldname": "job_quote",
+   "fieldname": "naming_series",
    "fieldtype": "Data",
+   "label": "Naming Series",
+   "options": "PTI-.YYYY.-."
+  },
+  {
+   "fieldname": "job_quote",
+   "fieldtype": "Link",
    "label": "Job Quote",
    "options": "Job Quote",
    "reqd": 1
@@ -112,10 +116,9 @@
    "label": "Task1 Name"
   },
   {
-   "allow_on_submit": 1,
    "fieldname": "table_1",
    "fieldtype": "Table",
-   "options": "Maintainance Type GRV"
+   "options": "Maintainance Type Issue"
   },
   {
    "fieldname": "task1_total_qty",
@@ -143,7 +146,7 @@
   {
    "fieldname": "table_2",
    "fieldtype": "Table",
-   "options": "Maintainance Type GRV"
+   "options": "Maintainance Type Issue"
   },
   {
    "fieldname": "task2_total_qty",
@@ -171,7 +174,7 @@
   {
    "fieldname": "table_3",
    "fieldtype": "Table",
-   "options": "Maintainance Type GRV"
+   "options": "Maintainance Type Issue"
   },
   {
    "fieldname": "task3_total_qty",
@@ -199,7 +202,7 @@
   {
    "fieldname": "table_4",
    "fieldtype": "Table",
-   "options": "Maintainance Type GRV"
+   "options": "Maintainance Type Issue"
   },
   {
    "fieldname": "task4_total_qty",
@@ -227,7 +230,7 @@
   {
    "fieldname": "table_5",
    "fieldtype": "Table",
-   "options": "Maintainance Type GRV"
+   "options": "Maintainance Type Issue"
   },
   {
    "fieldname": "task5_total_qty",
@@ -250,7 +253,7 @@
   {
    "fieldname": "table_6",
    "fieldtype": "Table",
-   "options": "Maintainance Type GRV"
+   "options": "Maintainance Type Issue"
   },
   {
    "collapsible": 1,
@@ -261,7 +264,7 @@
   {
    "fieldname": "table_7",
    "fieldtype": "Table",
-   "options": "Maintainance Type GRV"
+   "options": "Maintainance Type Issue"
   },
   {
    "collapsible": 1,
@@ -272,7 +275,7 @@
   {
    "fieldname": "table_8",
    "fieldtype": "Table",
-   "options": "Maintainance Type GRV"
+   "options": "Maintainance Type Issue"
   },
   {
    "collapsible": 1,
@@ -283,7 +286,7 @@
   {
    "fieldname": "table_9",
    "fieldtype": "Table",
-   "options": "Maintainance Type GRV"
+   "options": "Maintainance Type Issue"
   },
   {
    "collapsible": 1,
@@ -294,13 +297,22 @@
   {
    "fieldname": "table_10",
    "fieldtype": "Table",
-   "options": "Maintainance Type GRV"
+   "options": "Maintainance Type Issue"
+  },
+  {
+   "fieldname": "totals_section",
+   "fieldtype": "Section Break",
+   "label": "Totals"
   },
   {
    "fieldname": "total_amount",
    "fieldtype": "Float",
    "label": "Total Amount ",
    "read_only": 1
+  },
+  {
+   "fieldname": "column_break_ngzj",
+   "fieldtype": "Column Break"
   },
   {
    "fieldname": "total_quantity",
@@ -401,7 +413,7 @@
    "fieldtype": "Link",
    "label": "Amended From",
    "no_copy": 1,
-   "options": "GRV",
+   "options": "Part Issue",
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
@@ -411,46 +423,20 @@
    "fieldtype": "Link",
    "label": "Amended From",
    "no_copy": 1,
-   "options": "GRV",
+   "options": "Part Issue",
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
-  },
-  {
-   "fieldname": "purchase_order",
-   "fieldtype": "Link",
-   "label": "Purchase Order",
-   "options": "Vehicle Purchase Order",
-   "reqd": 1
-  },
-  {
-   "fieldname": "naming_series",
-   "fieldtype": "Data",
-   "label": "Naming Series",
-   "options": "GRV-.YYYY.-."
-  },
-  {
-   "fetch_from": "purchase_order.supplier",
-   "fieldname": "supplier",
-   "fieldtype": "Data",
-   "label": "Supplier",
-   "options": "Vehicle Purchase Order"
-  },
-  {
-   "fieldname": "purchase_invoice",
-   "fieldtype": "Link",
-   "label": "Purchase Invoice",
-   "options": "Purchase Invoice"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-03-26 16:34:12.482347",
+ "modified": "2026-03-26 10:08:00.994110",
  "modified_by": "Administrator",
  "module": "Vehicle",
- "name": "GRV",
+ "name": "Part Issue",
  "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [

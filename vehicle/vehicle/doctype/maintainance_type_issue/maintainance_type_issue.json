@@ -1,97 +1,22 @@
 {
  "actions": [],
  "allow_rename": 1,
- "creation": "2026-03-18 13:49:35.334446",
+ "creation": "2026-03-26 10:03:15.834437",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
   "item_code",
   "item_name",
-  "description",
   "qty",
-  "rate",
-  "amount",
   "column_break_ldwj",
-  "received_qty",
-  "balance_qty",
   "mantainance_type",
-  "add_qty"
+  "fully_issued",
+  "partly_issued"
  ],
  "fields": [
   {
-   "fieldname": "description",
-   "fieldtype": "Data",
-   "in_filter": 1,
-   "in_global_search": 1,
-   "in_list_view": 1,
-   "in_preview": 1,
-   "in_standard_filter": 1,
-   "label": "Description"
-  },
-  {
-   "fieldname": "qty",
-   "fieldtype": "Float",
-   "in_filter": 1,
-   "in_list_view": 1,
-   "in_preview": 1,
-   "in_standard_filter": 1,
-   "label": "Ordered QTY"
-  },
-  {
-   "fieldname": "column_break_ldwj",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "rate",
-   "fieldtype": "Float",
-   "in_filter": 1,
-   "in_list_view": 1,
-   "in_preview": 1,
-   "in_standard_filter": 1,
-   "label": "Rate"
-  },
-  {
-   "fieldname": "amount",
-   "fieldtype": "Float",
-   "in_filter": 1,
-   "in_list_view": 1,
-   "in_preview": 1,
-   "in_standard_filter": 1,
-   "label": "Amount",
-   "read_only": 1
-  },
-  {
-   "fieldname": "mantainance_type",
-   "fieldtype": "Data",
-   "in_filter": 1,
-   "in_global_search": 1,
-   "in_list_view": 1,
-   "in_preview": 1,
-   "in_standard_filter": 1,
-   "label": "Mantainance Type "
-  },
-  {
-   "allow_on_submit": 1,
-   "fieldname": "received_qty",
-   "fieldtype": "Float",
-   "in_filter": 1,
-   "in_list_view": 1,
-   "in_preview": 1,
-   "in_standard_filter": 1,
-   "label": "Received QTY "
-  },
-  {
-   "allow_on_submit": 1,
-   "fieldname": "balance_qty",
-   "fieldtype": "Float",
-   "in_filter": 1,
-   "in_list_view": 1,
-   "in_preview": 1,
-   "in_standard_filter": 1,
-   "label": "Balance QTY "
-  },
-  {
+   "columns": 4,
    "fieldname": "item_code",
    "fieldtype": "Link",
    "in_filter": 1,
@@ -106,23 +31,63 @@
    "fetch_from": "item_code.item_name",
    "fieldname": "item_name",
    "fieldtype": "Data",
-   "hidden": 1,
    "label": "Item Name"
   },
   {
-   "fieldname": "add_qty",
-   "fieldtype": "Button",
-   "label": "Add Qty"
+   "default": "1",
+   "fieldname": "qty",
+   "fieldtype": "Float",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Qty"
+  },
+  {
+   "fieldname": "column_break_ldwj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "mantainance_type",
+   "fieldtype": "Data",
+   "in_filter": 1,
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Mantainance Type "
+  },
+  {
+   "default": "0",
+   "fieldname": "fully_issued",
+   "fieldtype": "Check",
+   "in_filter": 1,
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Fully Issued"
+  },
+  {
+   "default": "0",
+   "fieldname": "partly_issued",
+   "fieldtype": "Check",
+   "in_filter": 1,
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Partly Issued"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-03-26 16:35:18.873382",
+ "modified": "2026-03-26 10:03:15.834437",
  "modified_by": "Administrator",
  "module": "Vehicle",
- "name": "Maintainance Type GRV",
+ "name": "Maintainance Type Issue",
  "owner": "Administrator",
  "permissions": [],
  "row_format": "Dynamic",

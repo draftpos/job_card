@@ -6,7 +6,49 @@ from frappe.model.document import Document
 
 
 class GRV(Document):
-	pass
+	def on_submit(self):
+		"""
+		On GRV submit, create a single Purchase Invoice for all items.
+		If creation fails, stop submission.
+		If successful, update self.purchase_invoice.
+		"""
+		all_items = []
+
+		# 🔹 Gather all items from tables
+		for i in range(1, 11):
+			table_name = f"table_{i}"
+			for row in self.get(table_name) or []:
+				if row.qty > 0:
+					all_items.append({
+						"item_code": row.item_code,
+						"qty": row.qty,
+						"rate": 0,       # optionally fetch from GRV/PO
+						"amount": 0
+					})
+
+		if not all_items:
+			frappe.throw(_("No items to create Purchase Invoice for!"))
+
+		try:
+			# 🔹 Create PI
+			pi = frappe.new_doc("Purchase Invoice")
+			pi.supplier = self.supplier
+			pi.posting_date = nowdate()
+
+			for item in all_items:
+				pi.append("items", item)
+
+			pi.insert()
+			pi.submit()
+
+			# 🔹 Update GRV field with PI
+			self.purchase_invoice = pi.name
+			self.db_set("purchase_invoice", pi.name)  # ensures DB updated
+
+			frappe.msgprint(f"Purchase Invoice {pi.name} created successfully ✅")
+
+		except Exception as e:
+			frappe.throw(_("Failed to create Purchase Invoice: {0}").format(e))
 
 @frappe.whitelist()
 def get_vehicle_order(source_name):
@@ -20,7 +62,7 @@ def get_vehicle_order(source_name):
 		"fuel", "make", "reg_number", "speedometer",
 		"body_type", "chasis", "job_quote",
 		"customer", "customer_type", "default_price_list",
-		"total_amount", "total_quantity"
+		"total_amount", "total_quantity","supplier"
 	]
 
 	for field in fields_to_copy:
@@ -51,8 +93,39 @@ def get_vehicle_order(source_name):
 
 
 
+import frappe
+from frappe.utils import nowdate
+
 @frappe.whitelist()
 def process_grv_item(item_code, qty, purchase_order=None):
+    """
+    Create a Purchase Receipt for the given item and qty from the purchase order.
+    """
     print(f"[GRV] Received item_code: {item_code}, qty: {qty}, purchase_order: {purchase_order}")
-    frappe.log_error(f"Received item_code: {item_code}, qty: {qty}, purchase_order: {purchase_order}", "GRV Item Processing")
-    return {"success": True, "msg": "Params received bro 🔥"}
+
+    if not purchase_order:
+        frappe.throw("Purchase Order not provided!")
+
+    # Get the Vehicle Purchase Order doc
+    po = frappe.get_doc("Vehicle Purchase Order", purchase_order)
+
+    # Create Purchase Receipt linked to this PO
+    pr = frappe.new_doc("Purchase Receipt")
+    pr.purchase_order = po.name
+    pr.supplier = po.supplier   # ✅ supplier comes from PO
+    pr.posting_date = nowdate()
+
+    # Add item
+    pr.append("items", {
+        "item_code": item_code,
+        "qty": qty,
+        "rate": 0,   # or pull from PO item rate if you want
+        "amount": 0
+    })
+
+    pr.insert()
+    pr.submit()
+
+    frappe.msgprint(f"Purchase Receipt {pr.name} created for {item_code}, qty: {qty} ✅")
+
+    return {"success": True, "purchase_receipt": pr.name}
