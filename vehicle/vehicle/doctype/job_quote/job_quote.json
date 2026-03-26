@@ -382,7 +382,6 @@
    "options": "Maintainance Type"
   },
   {
-   "columns": 10,
    "fieldname": "table_1",
    "fieldtype": "Table",
    "options": "Maintainance Type"
@@ -449,7 +448,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-03-26 22:39:52.994868",
+ "modified": "2026-03-26 23:14:41.931250",
  "modified_by": "Administrator",
  "module": "Vehicle",
  "name": "Job Quote",

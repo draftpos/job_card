@@ -32,12 +32,19 @@
    "fetch_from": "item_code.valuation_rate",
    "fieldname": "rate",
    "fieldtype": "Float",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
    "label": "Rate"
   },
   {
    "columns": 1,
    "fieldname": "amount",
    "fieldtype": "Float",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
    "label": "Amount"
   },
   {
@@ -67,6 +74,7 @@
    "options": "Item"
   },
   {
+   "columns": 3,
    "fetch_from": "item_code.item_name",
    "fieldname": "item_name",
    "fieldtype": "Data",
@@ -77,6 +85,9 @@
    "fetch_from": "item_code.item_name",
    "fieldname": "description",
    "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
    "label": "Description"
   }
  ],
@@ -84,7 +95,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-03-26 23:10:29.144952",
+ "modified": "2026-03-26 23:16:58.623941",
  "modified_by": "Administrator",
  "module": "Vehicle",
  "name": "Maintainance Type",
