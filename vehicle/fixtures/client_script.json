@@ -108,5 +108,27 @@
   "name": "Dynamic copy of fields",
   "script": "frappe.ui.form.on(\"Part Issue\", {\n    refresh(frm) {\n        update_all_task_labels(frm);\n    },\n\n    // listen to any task field change dynamically\n    task1_name(frm) { update_task_label(frm, 1); },\n    task2_name(frm) { update_task_label(frm, 2); },\n    task3_name(frm) { update_task_label(frm, 3); },\n    task4_name(frm) { update_task_label(frm, 4); },\n    task5_name(frm) { update_task_label(frm, 5); },\n});\n\n// loop through all tasks\nfunction update_all_task_labels(frm) {\n    for (let i = 1; i <= 5; i++) {\n        update_task_label(frm, i);\n    }\n}\n\nfunction update_task_label(frm, taskNum) {\n    let field_name = `task${taskNum}_name`;\n    let section_fieldname = `task_${taskNum}_section`;\n    let value = frm.doc[field_name] || `Task ${taskNum}`;\n    let label_text = `Task${taskNum} - ${value}`;\n\n    // Update metadata\n    frm.set_df_property(section_fieldname, \"label\", label_text);\n\n    // Force UI update without breaking arrow\n    setTimeout(() => {\n        let section = frm.fields_dict[section_fieldname];\n        if (section && section.wrapper) {\n            let header = $(section.wrapper).find(\".section-head\");\n\n            // Remove old text nodes\n            header.contents().filter(function() {\n                return this.nodeType === 3;\n            }).remove();\n\n            // Insert new label after the arrow\n            let arrow = header.find(\".caret\");\n            if (arrow.length) {\n                arrow.after(\" \" + label_text);\n            } else {\n                header.prepend(label_text + \" \");\n            }\n        }\n    }, 50);\n}",
   "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Job Quote",
+  "enabled": 1,
+  "modified": "2026-03-27 12:06:12.200504",
+  "module": "Vehicle",
+  "name": "wip change in job quote",
+  "script": "frappe.ui.form.on('Job Quote', {\n    refresh: function(frm) {\n\n        // 🔹 Convert to WIP button\n        frm.add_custom_button(\"Convert to WIP\", function() {\n            if(frm.doc.status === \"In Progress\") {\n                frappe.msgprint(\"Job is already In Progress\");\n                return;\n            }\n\n            if(frm.doc.status === \"Quotation\") {\n                frappe.call({\n                    method: \"frappe.client.set_value\",\n                    args: {\n                        doctype: frm.doc.doctype,\n                        name: frm.doc.name,\n                        fieldname: \"status\",\n                        value: \"In Progress\"\n                    },\n                    callback: function(r) {\n                        if(!r.exc) {\n                            frm.set_value(\"status\", \"In Progress\");\n                            frm.refresh_field(\"status\");\n                            frappe.msgprint(\"Status updated to In Progress (WIP)\");\n                        }\n                    }\n                });\n            } else {\n                frappe.msgprint(\"Cannot convert: Job status is not Quotation\");\n            }\n\n        }, __(\"Actions\"));\n\n\n        // 🔹 Auto Issue All button\n        frm.add_custom_button(\"Auto Issue All\", function() {\n            for (let i = 1; i <= 10; i++) {\n                let table_field = `table_${i}`;\n                if(frm.doc[table_field] && frm.doc[table_field].length) {\n                    frm.doc[table_field].forEach(function(row) {\n                        // remove partly issued\n                        row.partly_issued = 0;\n                        // optionally, auto-set fully issued\n                        row.fully_issued = 1; // comment this line if you don't want to auto-mark fully issued\n                    });\n                    frm.refresh_field(table_field);\n                }\n            }\n            frappe.msgprint(\"All items updated: Partly Issued removed\");\n        }, __(\"Actions\"));\n\n    }\n});",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Job Quote",
+  "enabled": 1,
+  "modified": "2026-03-27 11:48:25.009155",
+  "module": "Vehicle",
+  "name": "get selling price for quotes",
+  "script": "frappe.ui.form.on('Maintainance Type', {\n    item_code: function(frm, cdt, cdn) {\n        let row = locals[cdt][cdn];\n        if(row.item_code) {\n            frappe.call({\n                method: \"vehicle.api.get_standard_selling_price\",\n                args: { item_code: row.item_code },\n                callback: function(r) {\n                    if(r.message != null) {\n                        frappe.model.set_value(cdt, cdn, \"rate\", r.message);\n                    }\n                }\n            });\n        }\n    }\n});",
+  "view": "Form"
  }
 ]
