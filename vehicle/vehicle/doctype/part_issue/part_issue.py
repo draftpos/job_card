@@ -7,6 +7,42 @@ from frappe import _
 
 
 class PartIssue(Document):
+	def before_save(self):
+		if not self.job_quote:
+			return  # no linked Job Quote, nothing to do
+
+		# fetch linked Job Quote doc
+		jq = frappe.get_doc("Job Quote", self.job_quote)
+
+		# loop through tables 1-10
+		for i in range(1, 11):
+			pi_table_field = f"table_{i}"  # child table in Part Issue
+			jq_table_field = f"table_{i}"  # matching child table in Job Quote
+
+			for pi_row in getattr(self, pi_table_field, []):
+				fully = getattr(pi_row, "fully_issued", False)
+				partly = getattr(pi_row, "partly_issued", False)
+
+				# 🚨 Validation: cannot be both fully and partly issued
+				if fully and partly:
+					frappe.throw(
+						f"Item {pi_row.item_code} in {pi_table_field} cannot be both fully issued and partly issued."
+					)
+
+				# skip if neither
+				if not fully and not partly:
+					continue
+
+				# 🔗 Sync flags to Job Quote
+				for jq_row in getattr(jq, jq_table_field, []):
+					if jq_row.item_code == pi_row.item_code:
+						jq_row.fully_issued = fully
+						jq_row.partly_issued = partly
+						break  # matched, stop inner loop
+
+		# save Job Quote silently
+		jq.save(ignore_permissions=True)
+		
 	def on_submit(self):
 		"""
 		Only allow submit if all items in non-empty tables are fully issued.

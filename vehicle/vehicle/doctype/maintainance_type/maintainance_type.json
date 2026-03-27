@@ -91,12 +91,14 @@
    "label": "Description"
   },
   {
+   "allow_on_submit": 1,
    "default": "0",
    "fieldname": "partly_issued",
    "fieldtype": "Check",
    "label": "Partly Issued "
   },
   {
+   "allow_on_submit": 1,
    "default": "0",
    "fieldname": "fully_issued",
    "fieldtype": "Check",
@@ -107,7 +109,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-03-27 12:00:33.281552",
+ "modified": "2026-03-27 12:24:42.426229",
  "modified_by": "Administrator",
  "module": "Vehicle",
  "name": "Maintainance Type",
