@@ -24,3 +24,44 @@ def get_item_prices(item_code):
         "selling_price": selling_price,
         "buying_price": buying_price
     }
+import frappe
+from frappe.model.document import Document
+from frappe.utils import nowdate, flt
+
+@frappe.whitelist()
+def convert_quote_to_wip(job_quote):
+    old_doc = frappe.get_doc("Job Quote", job_quote)
+
+    if old_doc.job_wip:
+        frappe.throw("Quote already converted to WIP")
+
+    # 🔹 Create new Job Quote (WIP)
+    new_doc = frappe.get_doc({
+        "doctype": "Job Quote",
+        "customer": old_doc.customer,
+        "job_quote": old_doc.name, 
+        "reg_number": old_doc.reg_number,
+        # copy other fields you want here
+    })
+
+    # 🔹 Duplicate child tables
+    for i in range(1, 11):
+        table_field = f"table_{i}"
+        if hasattr(old_doc, table_field):
+            for row in getattr(old_doc, table_field):
+                new_row = row.as_dict()
+                # remove Frappe internals to avoid conflicts
+                for key in ("name", "parent", "parentfield", "parenttype", "idx"):
+                    new_row.pop(key, None)
+                new_doc.append(table_field, new_row)
+
+    new_doc.insert(ignore_permissions=True)
+
+    # 🔹 Link old doc to new WIP
+    old_doc.job_wip = new_doc.name
+    old_doc.status="In Progress"
+    old_doc.save(ignore_permissions=True)
+
+    frappe.msgprint(f"Job Quote converted to WIP successfully: <b>{new_doc.name}</b>", alert=True)
+
+    return new_doc.name

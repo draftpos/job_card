@@ -6,7 +6,6 @@
  "engine": "InnoDB",
  "field_order": [
   "vehicle_tab",
-  "status",
   "reg_number",
   "car_name",
   "engine_number",
@@ -22,9 +21,11 @@
   "chasis",
   "customer_tab",
   "customer",
-  "column_break_sybl",
-  "customer_type",
+  "status",
   "amended_from",
+  "column_break_sybl",
+  "job_wip",
+  "job_quote",
   "details_tab",
   "section_break_aqwu",
   "column_break_orgl",
@@ -279,13 +280,6 @@
    "label": "Customer"
   },
   {
-   "fieldname": "customer_type",
-   "fieldtype": "Select",
-   "label": "Customer Type",
-   "options": "Individual\nCompany",
-   "reqd": 1
-  },
-  {
    "fieldname": "column_break_sybl",
    "fieldtype": "Column Break"
   },
@@ -453,16 +447,29 @@
    "in_list_view": 1,
    "in_preview": 1,
    "in_standard_filter": 1,
-   "label": "WIP",
-   "options": "Task Status",
-   "read_only": 1
+   "label": "Status",
+   "options": "Task Status"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "job_wip",
+   "fieldtype": "Link",
+   "label": "Job WIP",
+   "options": "Job Quote"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "job_quote",
+   "fieldtype": "Link",
+   "label": "Job Quote",
+   "options": "Job Quote"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-03-27 14:25:22.724781",
+ "modified": "2026-03-27 17:18:59.157953",
  "modified_by": "Administrator",
  "module": "Vehicle",
  "name": "Job Quote",

@@ -1,7 +1,7 @@
 [
  {
   "charts": [],
-  "content": "[{\"id\":\"2TapgmXyyg\",\"type\":\"header\",\"data\":{\"text\":\"<span style=\\\"font-size: 18px; letter-spacing: 0.18px;\\\"><b>Modules</b></span>\",\"col\":12}},{\"id\":\"a_FHRl8Fv6\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Job Quote\",\"col\":3}},{\"id\":\"ov96_g-paK\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Vehicle Purchase Order\",\"col\":3}},{\"id\":\"gEiBlcf115\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Grv\",\"col\":3}},{\"id\":\"6WU0JE2S-K\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Part Issue\",\"col\":3}}]",
+  "content": "[{\"id\":\"2TapgmXyyg\",\"type\":\"header\",\"data\":{\"text\":\"<span style=\\\"font-size: 18px; letter-spacing: 0.18px;\\\"><b>Modules</b></span>\",\"col\":12}},{\"id\":\"a_FHRl8Fv6\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Job Quote\",\"col\":3}},{\"id\":\"ov96_g-paK\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Vehicle Purchase Order\",\"col\":3}},{\"id\":\"gEiBlcf115\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Grv\",\"col\":3}},{\"id\":\"6WU0JE2S-K\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Part Issue\",\"col\":3}},{\"id\":\"vlpuyUU2ry\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Purchase Invoice\",\"col\":3}}]",
   "custom_blocks": [],
   "docstatus": 0,
   "doctype": "Workspace",
@@ -12,7 +12,7 @@
   "is_hidden": 0,
   "label": "Vehicle Job Card",
   "links": [],
-  "modified": "2026-03-26 17:43:42.982093",
+  "modified": "2026-03-27 15:23:21.355577",
   "module": null,
   "name": "Vehicle Job Card",
   "number_cards": [],
@@ -23,6 +23,23 @@
   "roles": [],
   "sequence_id": 3.0,
   "shortcuts": [
+   {
+    "color": "Grey",
+    "doc_view": "List",
+    "format": null,
+    "icon": null,
+    "kanban_board": null,
+    "label": "Purchase Invoice",
+    "link_to": "Purchase Invoice",
+    "parent": "Vehicle Job Card",
+    "parentfield": "shortcuts",
+    "parenttype": "Workspace",
+    "report_ref_doctype": null,
+    "restrict_to_domain": null,
+    "stats_filter": "[]",
+    "type": "DocType",
+    "url": null
+   },
    {
     "color": "Grey",
     "doc_view": "List",
