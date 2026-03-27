@@ -5,6 +5,7 @@ from frappe.utils import nowdate, flt
 from frappe.model.document import Document
 
 class JobQuote(Document):
+	
 
 	def calculate_table_totals(self, child_table_fieldname, total_amount_field, total_qty_field):
 		total_amount = 0
@@ -33,13 +34,18 @@ class JobQuote(Document):
 			if hasattr(self, table_field):
 				self.calculate_table_totals(table_field, total_amount_field, total_qty_field)
 
+				# 🔹 validation: check each row for fully & partly issued
+				for row in getattr(self, table_field, []):
+					if getattr(row, "fully_issued", False) and getattr(row, "partly_issued", False):
+						frappe.throw(f"Item {row.item_code} in {table_field} cannot be both fully issued and partly issued.")
+
 		# now consolidate all tables into grand totals
 		self.total_amount = sum(getattr(self, f"task{i}_total_amount", 0) for i in range(1, 11))
 		self.total_quantity = sum(getattr(self, f"task{i}_total_qty", 0) for i in range(1, 11))
 		
 	def on_submit(self):
 			self.create_sales_quotation()
-				
+
 	from frappe.utils import nowdate, flt
 
 	def create_sales_quotation(self):
