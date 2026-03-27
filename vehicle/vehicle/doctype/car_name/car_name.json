@@ -1,7 +1,7 @@
 {
  "actions": [],
  "autoname": "autoincrement",
- "creation": "2026-03-18 08:33:35.784488",
+ "creation": "2026-03-27 10:03:26.745029",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
@@ -22,10 +22,10 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-03-27 09:58:37.029689",
+ "modified": "2026-03-27 10:03:26.745029",
  "modified_by": "Administrator",
  "module": "Vehicle",
- "name": "Reg Number",
+ "name": "Car Name",
  "naming_rule": "Autoincrement",
  "owner": "Administrator",
  "permissions": [

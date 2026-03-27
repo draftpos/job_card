@@ -5,9 +5,23 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "vehicle_tab",
+  "status",
+  "reg_number",
+  "car_name",
+  "engine_number",
+  "model",
+  "color",
+  "column_break_svfi",
+  "fuel",
+  "year_model",
+  "make",
+  "column_break_xtli",
+  "speedometer",
+  "body_type",
+  "chasis",
   "customer_tab",
   "customer",
-  "status",
   "column_break_sybl",
   "customer_type",
   "amended_from",
@@ -16,9 +30,9 @@
   "column_break_orgl",
   "naming_series",
   "total_amount",
-  "total_quantity",
   "column_break_akth",
   "quotation",
+  "total_quantity",
   "task_1_section",
   "task1_name",
   "table_1",
@@ -53,20 +67,7 @@
   "task_9_section",
   "table_9",
   "task_10_section",
-  "table_10",
-  "vehicle_tab",
-  "color",
-  "model",
-  "engine_number",
-  "year_model",
-  "column_break_svfi",
-  "fuel",
-  "make",
-  "reg_number",
-  "column_break_xtli",
-  "speedometer",
-  "body_type",
-  "chasis"
+  "table_10"
  ],
  "fields": [
   {
@@ -83,7 +84,8 @@
    "fieldname": "status",
    "fieldtype": "Link",
    "label": "Status",
-   "options": "Task Status"
+   "options": "Task Status",
+   "read_only": 1
   },
   {
    "collapsible": 1,
@@ -152,17 +154,16 @@
   {
    "fieldname": "color",
    "fieldtype": "Data",
-   "label": "Color",
-   "reqd": 1
+   "label": "Color"
   },
   {
    "fieldname": "model",
    "fieldtype": "Link",
    "label": "Model",
-   "options": "Model",
-   "reqd": 1
+   "options": "Model"
   },
   {
+   "allow_in_quick_entry": 1,
    "fieldname": "engine_number",
    "fieldtype": "Link",
    "in_filter": 1,
@@ -171,15 +172,13 @@
    "in_preview": 1,
    "in_standard_filter": 1,
    "label": "Engine Number",
-   "options": "Engine Number",
-   "reqd": 1
+   "options": "Engine Number"
   },
   {
    "fieldname": "fuel",
    "fieldtype": "Select",
    "label": "Fuel",
-   "options": "Petrol\nDiesel",
-   "reqd": 1
+   "options": "Petrol\nDiesel"
   },
   {
    "fieldname": "make",
@@ -189,10 +188,10 @@
    "in_preview": 1,
    "in_standard_filter": 1,
    "label": "Make",
-   "options": "Vehicle Make",
-   "reqd": 1
+   "options": "Vehicle Make"
   },
   {
+   "allow_in_quick_entry": 1,
    "fieldname": "reg_number",
    "fieldtype": "Link",
    "in_filter": 1,
@@ -212,15 +211,13 @@
   {
    "fieldname": "body_type",
    "fieldtype": "Data",
-   "label": "Body Type",
-   "reqd": 1
+   "label": "Body Type"
   },
   {
    "fieldname": "chasis",
    "fieldtype": "Link",
    "label": "Chasis",
-   "options": "VN Chasis",
-   "reqd": 1
+   "options": "VN Chasis"
   },
   {
    "fieldname": "year_model",
@@ -230,8 +227,7 @@
    "in_list_view": 1,
    "in_preview": 1,
    "in_standard_filter": 1,
-   "label": "Year Model",
-   "reqd": 1
+   "label": "Year Model"
   },
   {
    "fieldname": "column_break_svfi",
@@ -427,12 +423,14 @@
   {
    "fieldname": "quotation",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Quotation",
    "options": "Quotation"
   },
   {
    "fieldname": "naming_series",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Naming Series",
    "options": "JQ-.YYYY.-."
   },
@@ -442,13 +440,25 @@
    "label": "Customer Name",
    "options": "Customer",
    "reqd": 1
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "car_name",
+   "fieldtype": "Link",
+   "in_filter": 1,
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Car Name",
+   "options": "Car Name"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-03-26 23:14:41.931250",
+ "modified": "2026-03-27 10:04:38.861187",
  "modified_by": "Administrator",
  "module": "Vehicle",
  "name": "Job Quote",

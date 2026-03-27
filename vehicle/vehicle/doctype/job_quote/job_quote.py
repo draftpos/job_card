@@ -88,6 +88,7 @@ class JobQuote(Document):
 			qt.set_missing_values()
 			qt.calculate_taxes_and_totals()
 			qt.insert(ignore_permissions=True)
+			qt.submit()
 
 			# 🔗 Link back
 			self.db_set("quotation", qt.name)
