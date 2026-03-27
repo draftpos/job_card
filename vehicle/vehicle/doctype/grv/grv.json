@@ -426,6 +426,7 @@
   {
    "fieldname": "naming_series",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Naming Series",
    "options": "GRV-.YYYY.-."
   },
@@ -465,7 +466,7 @@
    "link_fieldname": "Name"
   }
  ],
- "modified": "2026-03-27 08:54:23.468706",
+ "modified": "2026-03-27 15:04:20.157433",
  "modified_by": "Administrator",
  "module": "Vehicle",
  "name": "GRV",
