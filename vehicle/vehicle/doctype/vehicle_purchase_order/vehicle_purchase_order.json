@@ -9,11 +9,14 @@
   "section_break_aqwu",
   "column_break_orgl",
   "naming_series",
+  "customer",
+  "status",
   "job_quote",
   "supplier",
   "column_break_pspw",
-  "status",
   "purchase_order",
+  "total_amount",
+  "total_quantity",
   "task_1_section",
   "task1_name",
   "table_1",
@@ -49,13 +52,10 @@
   "table_9",
   "task_10_section",
   "table_10",
-  "totals_section",
-  "total_amount",
-  "column_break_ngzj",
-  "total_quantity",
   "vehicle_tab",
   "color",
   "model",
+  "amended_from",
   "engine_number",
   "year_model",
   "column_break_svfi",
@@ -65,12 +65,7 @@
   "column_break_xtli",
   "speedometer",
   "body_type",
-  "chasis",
-  "customer_tab",
-  "customer",
-  "column_break_sybl",
-  "customer_type",
-  "amended_from"
+  "chasis"
  ],
  "fields": [
   {
@@ -175,11 +170,12 @@
    "fieldtype": "Column Break"
   },
   {
-   "default": "In Progress",
+   "fetch_from": "job_quote.status",
    "fieldname": "status",
    "fieldtype": "Link",
    "label": "Status",
-   "options": "Task Status"
+   "options": "Task Status",
+   "read_only": 1
   },
   {
    "collapsible": 1,
@@ -377,41 +373,14 @@
    "options": "Maintainance Type"
   },
   {
-   "fieldname": "totals_section",
-   "fieldtype": "Section Break",
-   "label": "Totals"
-  },
-  {
    "fieldname": "total_amount",
    "fieldtype": "Float",
-   "label": "Total Amount ",
-   "read_only": 1
-  },
-  {
-   "fieldname": "column_break_ngzj",
-   "fieldtype": "Column Break"
+   "label": "Total Amount "
   },
   {
    "fieldname": "total_quantity",
    "fieldtype": "Float",
-   "label": "Total Quantity ",
-   "read_only": 1
-  },
-  {
-   "fieldname": "customer_tab",
-   "fieldtype": "Tab Break",
-   "label": "Customer"
-  },
-  {
-   "fieldname": "column_break_sybl",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "customer_type",
-   "fieldtype": "Select",
-   "label": "Customer Type",
-   "options": "Individual\nCompany",
-   "reqd": 1
+   "label": "Total Qty"
   },
   {
    "fieldname": "job_quote",
@@ -445,18 +414,20 @@
    "fieldname": "purchase_order",
    "fieldtype": "Link",
    "label": "Puchase Order",
-   "options": "Purchase Order"
+   "options": "Purchase Order",
+   "read_only": 1
   },
   {
    "fieldname": "customer",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Customer Name",
-   "options": "Customer",
-   "reqd": 1
+   "options": "Customer"
   },
   {
    "fieldname": "naming_series",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Naming Series",
    "options": "VPO-.YYYY.-."
   }
@@ -465,7 +436,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-03-25 15:38:30.920344",
+ "modified": "2026-03-27 14:53:40.095036",
  "modified_by": "Administrator",
  "module": "Vehicle",
  "name": "Vehicle Purchase Order",
@@ -487,7 +458,9 @@
  ],
  "row_format": "Dynamic",
  "rows_threshold_for_grid_search": 20,
+ "show_title_field_in_link": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "title_field": "customer"
 }

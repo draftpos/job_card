@@ -125,10 +125,10 @@
   "doctype": "Client Script",
   "dt": "Job Quote",
   "enabled": 1,
-  "modified": "2026-03-27 11:48:25.009155",
+  "modified": "2026-03-27 14:46:02.912268",
   "module": "Vehicle",
   "name": "get selling price for quotes",
-  "script": "frappe.ui.form.on('Maintainance Type', {\n    item_code: function(frm, cdt, cdn) {\n        let row = locals[cdt][cdn];\n        if(row.item_code) {\n            frappe.call({\n                method: \"vehicle.api.get_standard_selling_price\",\n                args: { item_code: row.item_code },\n                callback: function(r) {\n                    if(r.message != null) {\n                        frappe.model.set_value(cdt, cdn, \"rate\", r.message);\n                    }\n                }\n            });\n        }\n    }\n});",
+  "script": "frappe.ui.form.on('Maintainance Type', {\n    item_code: function(frm, cdt, cdn) {\n        let row = locals[cdt][cdn];\n\n        if (row.item_code) {\n            frappe.call({\n                method: \"vehicle.api.get_item_prices\", // 🔥 updated method\n                args: { item_code: row.item_code },\n                callback: function(r) {\n                    if (r.message) {\n                        let selling = r.message.selling_price || 0;\n                        let buying = r.message.buying_price || 0;\n\n                        // 🔹 set values\n                        frappe.model.set_value(cdt, cdn, \"rate\", selling);\n                        frappe.model.set_value(cdt, cdn, \"buying_price\", buying);\n\n                        // 🔥 calculate margin\n                        let margin = selling - buying;\n                        frappe.model.set_value(cdt, cdn, \"margin\", margin);\n                    }\n                }\n            });\n        }\n    },\n\n    // 🔥 recalc margin if user edits manually\n    rate: function(frm, cdt, cdn) {\n        calculate_margin(cdt, cdn);\n    },\n\n    buying_price: function(frm, cdt, cdn) {\n        calculate_margin(cdt, cdn);\n    }\n});\n\nfunction calculate_margin(cdt, cdn) {\n    let row = locals[cdt][cdn];\n\n    let selling = row.rate || 0;\n    let buying = row.buying_price || 0;\n\n    let margin = buying ? ((selling - buying) / buying) * 100 : 0;\n\n    frappe.model.set_value(cdt, cdn, \"margin\", margin);\n}",
   "view": "Form"
  }
 ]

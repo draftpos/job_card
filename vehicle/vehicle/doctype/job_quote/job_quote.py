@@ -6,6 +6,21 @@ from frappe.model.document import Document
 
 class JobQuote(Document):
 	
+	def before_submit(self):
+		not_fully_issued = []
+
+		for i in range(1, 11):
+			table_field = f"table_{i}"
+
+			for row in getattr(self, table_field, []):
+				if row.item_code and not getattr(row, "fully_issued", False):
+					not_fully_issued.append(f"{row.item_code} (Table {i})")
+
+		if not_fully_issued:
+			frappe.throw(
+				"Cannot submit. The following items are not fully issued:<br><br>"
+				+ "<br>".join(not_fully_issued)
+			)
 
 	def calculate_table_totals(self, child_table_fieldname, total_amount_field, total_qty_field):
 		total_amount = 0

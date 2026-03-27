@@ -82,7 +82,9 @@ def get_job_quote(source_name):
 				"description": row.description,
 				"qty": row.qty,
 				"rate": row.rate,
-				"amount": row.amount
+				"amount": row.amount,
+				"buying_price": row.buying_price,
+				"margin": row.margin
 			})
 
 	return target_doc

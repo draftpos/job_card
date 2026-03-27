@@ -1,16 +1,26 @@
 import frappe
 
 @frappe.whitelist()
-def get_standard_selling_price(item_code):
-    """
-    Returns the standard selling price of the given item_code.
-    """
+def get_item_prices(item_code):
     if not item_code:
-        return 0
+        return {
+            "selling_price": 0,
+            "buying_price": 0
+        }
 
-    item = frappe.get_doc("Item", item_code)
-    
-    # 🔹 You can customize this to pull from different price lists if needed
-    # Here we assume the field is `standard_rate`
-    return item.standard_rate or 0
-                
+    selling_price = frappe.db.get_value(
+        "Item Price",
+        {"item_code": item_code, "selling": 1},
+        "price_list_rate"
+    ) or 0
+
+    buying_price = frappe.db.get_value(
+        "Item Price",
+        {"item_code": item_code, "buying": 1},
+        "price_list_rate"
+    ) or 0
+
+    return {
+        "selling_price": selling_price,
+        "buying_price": buying_price
+    }
