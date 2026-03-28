@@ -10,7 +10,7 @@
   "column_break_orgl",
   "naming_series",
   "customer",
-  "status",
+  "job_status",
   "job_quote",
   "supplier",
   "column_break_pspw",
@@ -168,14 +168,6 @@
   {
    "fieldname": "column_break_orgl",
    "fieldtype": "Column Break"
-  },
-  {
-   "fetch_from": "job_quote.status",
-   "fieldname": "status",
-   "fieldtype": "Link",
-   "label": "Status",
-   "options": "Task Status",
-   "read_only": 1
   },
   {
    "collapsible": 1,
@@ -430,13 +422,21 @@
    "hidden": 1,
    "label": "Naming Series",
    "options": "VPO-.YYYY.-."
+  },
+  {
+   "fetch_from": "job_quote.job_status",
+   "fieldname": "job_status",
+   "fieldtype": "Link",
+   "label": "Job Status",
+   "options": "Task Status",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-03-27 14:53:40.095036",
+ "modified": "2026-03-28 09:33:40.398645",
  "modified_by": "Administrator",
  "module": "Vehicle",
  "name": "Vehicle Purchase Order",

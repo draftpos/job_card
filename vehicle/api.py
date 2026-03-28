@@ -31,6 +31,8 @@ from frappe.utils import nowdate, flt
 @frappe.whitelist()
 def convert_quote_to_wip(job_quote):
     old_doc = frappe.get_doc("Job Quote", job_quote)
+    if old_doc.docstatus == 0:
+        frappe.throw("Please submit the Job Quote first before converting to WIP.")
 
     if old_doc.job_wip:
         frappe.throw("Quote already converted to WIP")
@@ -41,6 +43,7 @@ def convert_quote_to_wip(job_quote):
         "customer": old_doc.customer,
         "job_quote": old_doc.name, 
         "reg_number": old_doc.reg_number,
+        "job_status": "In Progress"
         # copy other fields you want here
     })
 
@@ -59,9 +62,42 @@ def convert_quote_to_wip(job_quote):
 
     # 🔹 Link old doc to new WIP
     old_doc.job_wip = new_doc.name
-    old_doc.status="In Progress"
+    # old_doc.job_status="In Progress"
     old_doc.save(ignore_permissions=True)
 
-    frappe.msgprint(f"Job Quote converted to WIP successfully: <b>{new_doc.name}</b>", alert=True)
+    frappe.msgprint(f"Job Quote converted to WIP successfully: <b>{new_doc.name}</b>")
 
     return new_doc.name
+
+
+@frappe.whitelist()
+def auto_issue_all(job_quote):
+    doc = frappe.get_doc("Job Quote", job_quote)
+
+    updated = False
+
+    for i in range(1, 11):
+        table_field = f"table_{i}"
+
+        if not hasattr(doc, table_field):
+            continue
+
+        rows = doc.get(table_field) or []
+
+        for row in rows:
+            # skip already fully issued
+            if row.fully_issued:
+                continue
+
+            # 🔥 Auto issue logic
+            row.issued_qty = row.qty
+            row.fully_issued = 1
+            row.partly_issued = 0
+
+            updated = True
+
+    if updated:
+        doc.save()
+        frappe.db.commit()
+
+    return {"status": "success"}

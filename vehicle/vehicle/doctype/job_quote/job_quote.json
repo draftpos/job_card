@@ -21,7 +21,7 @@
   "chasis",
   "customer_tab",
   "customer",
-  "status",
+  "job_status",
   "amended_from",
   "column_break_sybl",
   "job_wip",
@@ -187,7 +187,6 @@
    "fieldtype": "Link",
    "in_filter": 1,
    "in_global_search": 1,
-   "in_list_view": 1,
    "in_preview": 1,
    "in_standard_filter": 1,
    "label": "Reg Number",
@@ -439,37 +438,41 @@
   },
   {
    "allow_on_submit": 1,
-   "default": "Quotation",
-   "fieldname": "status",
-   "fieldtype": "Link",
-   "in_filter": 1,
-   "in_global_search": 1,
-   "in_list_view": 1,
-   "in_preview": 1,
-   "in_standard_filter": 1,
-   "label": "Status",
-   "options": "Task Status"
-  },
-  {
-   "allow_on_submit": 1,
    "fieldname": "job_wip",
    "fieldtype": "Link",
    "label": "Job WIP",
-   "options": "Job Quote"
+   "options": "Job Quote",
+   "read_only": 1
   },
   {
    "allow_on_submit": 1,
    "fieldname": "job_quote",
    "fieldtype": "Link",
    "label": "Job Quote",
-   "options": "Job Quote"
+   "options": "Job Quote",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "Quotation",
+   "fieldname": "job_status",
+   "fieldtype": "Link",
+   "in_filter": 1,
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Job Status",
+   "no_copy": 1,
+   "options": "Task Status",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-03-27 17:18:59.157953",
+ "modified": "2026-03-28 10:39:57.392627",
  "modified_by": "Administrator",
  "module": "Vehicle",
  "name": "Job Quote",
@@ -491,7 +494,7 @@
  ],
  "row_format": "Dynamic",
  "rows_threshold_for_grid_search": 20,
- "search_fields": "customer, status",
+ "search_fields": "customer, job_status",
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": []
