@@ -31,7 +31,7 @@ class JobQuote(Document):
 					+ "<br>".join(not_fully_issued)
 				)
 
-		self.job_status = "Completed"
+			self.job_status = "Completed"
 
 	def calculate_table_totals(self, child_table_fieldname, total_amount_field, total_qty_field):
 		total_amount = 0
