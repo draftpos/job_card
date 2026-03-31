@@ -61,7 +61,6 @@
   "fuel",
   "make",
   "reg_number",
-  "amended_from",
   "column_break_xtli",
   "speedometer",
   "body_type",
@@ -94,7 +93,7 @@
    "fieldtype": "Column Break"
   },
   {
-   "default": "In Progress",
+   "default": "Partial Received",
    "fieldname": "status",
    "fieldtype": "Link",
    "label": "Status",
@@ -397,26 +396,6 @@
    "options": "VN Chasis"
   },
   {
-   "fieldname": "amended_from",
-   "fieldtype": "Link",
-   "label": "Amended From",
-   "no_copy": 1,
-   "options": "GRV",
-   "print_hide": 1,
-   "read_only": 1,
-   "search_index": 1
-  },
-  {
-   "fieldname": "amended_from",
-   "fieldtype": "Link",
-   "label": "Amended From",
-   "no_copy": 1,
-   "options": "GRV",
-   "print_hide": 1,
-   "read_only": 1,
-   "search_index": 1
-  },
-  {
    "fieldname": "purchase_order",
    "fieldtype": "Link",
    "label": "Purchase Order",
@@ -435,7 +414,8 @@
    "fieldname": "supplier",
    "fieldtype": "Data",
    "label": "Supplier",
-   "options": "Vehicle Purchase Order"
+   "options": "Vehicle Purchase Order",
+   "read_only": 1
   },
   {
    "fieldname": "purchase_invoice",
@@ -446,7 +426,6 @@
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
- "is_submittable": 1,
  "links": [
   {
    "link_doctype": "Job Quote",
@@ -466,7 +445,7 @@
    "link_fieldname": "Name"
   }
  ],
- "modified": "2026-03-27 15:04:20.157433",
+ "modified": "2026-03-31 15:32:40.865674",
  "modified_by": "Administrator",
  "module": "Vehicle",
  "name": "GRV",

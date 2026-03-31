@@ -6,49 +6,13 @@ from frappe.model.document import Document
 
 
 class GRV(Document):
-	def on_submit(self):
-		"""
-		On GRV submit, create a single Purchase Invoice for all items.
-		If creation fails, stop submission.
-		If successful, update self.purchase_invoice.
-		"""
-		all_items = []
+	def befefore_save(sel	f):
+		# Ensure that the GRV is linked to a Vehicle Purchase Order
+		if not self.job_quote:
+			frappe.throw("GRV must be linked to a Vehicle Purchase Order (Job Quote).")		
 
-		# 🔹 Gather all items from tables
-		for i in range(1, 11):
-			table_name = f"table_{i}"
-			for row in self.get(table_name) or []:
-				if row.qty > 0:
-					all_items.append({
-						"item_code": row.item_code,
-						"qty": row.qty,
-						"rate": 0,       # optionally fetch from GRV/PO
-						"amount": 0
-					})
 
-		if not all_items:
-			frappe.throw(_("No items to create Purchase Invoice for!"))
 
-		try:
-			# 🔹 Create PI
-			pi = frappe.new_doc("Purchase Invoice")
-			pi.supplier = self.supplier
-			pi.posting_date = nowdate()
-
-			for item in all_items:
-				pi.append("items", item)
-
-			pi.insert()
-			pi.submit()
-
-			# 🔹 Update GRV field with PI
-			self.purchase_invoice = pi.name
-			self.db_set("purchase_invoice", pi.name)  # ensures DB updated
-
-			frappe.msgprint(f"Purchase Invoice {pi.name} created successfully ✅")
-
-		except Exception as e:
-			frappe.throw(_("Failed to create Purchase Invoice: {0}").format(e))
 
 @frappe.whitelist()
 def get_vehicle_order(source_name):
