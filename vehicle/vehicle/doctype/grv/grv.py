@@ -3,16 +3,37 @@
 
 import frappe
 from frappe.model.document import Document
+from frappe.utils import flt
 
 
 class GRV(Document):
-	def befefore_save(sel	f):
-		# Ensure that the GRV is linked to a Vehicle Purchase Order
-		if not self.job_quote:
-			frappe.throw("GRV must be linked to a Vehicle Purchase Order (Job Quote).")		
+	def before_save(self):
+		CHILD_TABLES = [
+			"table_1","table_2","table_3","table_4","table_5",
+			"table_6","table_7","table_8","table_9","table_10"
+		]
 
+		has_balance = False
+		found_any = False
 
+		# 🔹 Loop all child tables
+		for table in CHILD_TABLES:
+			rows = self.get(table) or []
 
+			if rows:
+				found_any = True
+
+			for r in rows:
+				if (r.get("balance_qty") or 0) > 0:
+					has_balance = True
+					break
+
+			if has_balance:
+				break
+
+		# 🔹 Only update if there are rows
+		if found_any:
+			self.status = "Partial Received" if has_balance else "Total Received"
 
 @frappe.whitelist()
 def get_vehicle_order(source_name):
@@ -62,34 +83,63 @@ from frappe.utils import nowdate
 
 @frappe.whitelist()
 def process_grv_item(item_code, qty, purchase_order=None):
-    """
-    Create a Purchase Receipt for the given item and qty from the purchase order.
-    """
-    print(f"[GRV] Received item_code: {item_code}, qty: {qty}, purchase_order: {purchase_order}")
+	"""
+	Create a Purchase Receipt for the given item and qty from the purchase order.
+	"""
+	print(f"[GRV] Received item_code: {item_code}, qty: {qty}, purchase_order: {purchase_order}")
 
-    if not purchase_order:
-        frappe.throw("Purchase Order not provided!")
+	if not purchase_order:
+		frappe.throw("Purchase Order not provided!")
 
-    # Get the Vehicle Purchase Order doc
-    po = frappe.get_doc("Vehicle Purchase Order", purchase_order)
+	# Get the Vehicle Purchase Order doc
+	po = frappe.get_doc("Vehicle Purchase Order", purchase_order)
 
-    # Create Purchase Receipt linked to this PO
-    pr = frappe.new_doc("Purchase Receipt")
-    pr.purchase_order = po.name
-    pr.supplier = po.supplier   # ✅ supplier comes from PO
-    pr.posting_date = nowdate()
+	# Create Purchase Receipt linked to this PO
+	pr = frappe.new_doc("Purchase Receipt")
+	pr.purchase_order = po.name
+	pr.supplier = po.supplier   # ✅ supplier comes from PO
+	pr.posting_date = nowdate()
 
-    # Add item
-    pr.append("items", {
-        "item_code": item_code,
-        "qty": qty,
-        "rate": 0,   # or pull from PO item rate if you want
-        "amount": 0
-    })
+	# Add item
+	pr.append("items", {
+		"item_code": item_code,
+		"qty": qty,
+		"rate": 0,   # or pull from PO item rate if you want
+		"amount": 0
+	})
 
-    pr.insert()
-    pr.submit()
+	pr.insert()
+	pr.submit()
 
-    frappe.msgprint(f"Purchase Receipt {pr.name} created for {item_code}, qty: {qty} ✅")
+	frappe.msgprint(f"Purchase Receipt {pr.name} created for {item_code}, qty: {qty} ✅")
 
-    return {"success": True, "purchase_receipt": pr.name}
+	return {"success": True, "purchase_receipt": pr.name}
+
+
+
+
+# 🔹 Single function to recalc balances and status
+def run_recalc(doc, method=None):
+	
+	child_tables = [
+		"table_1","table_2","table_3","table_4","table_5",
+		"table_6","table_7","table_8","table_9","table_10"
+	]
+	print("---------------------------calculating")
+
+	has_balance = False
+
+	for table_field in child_tables:
+		rows = getattr(doc, table_field, []) or []
+		for row in rows:
+			ordered = flt(row.qty or 0)
+			received = flt(row.received_qty or 0)
+			row.balance_qty = max(ordered - received, 0)
+
+			if row.balance_qty > 0:
+				has_balance = True
+
+	doc.status = "Partial Received" if has_balance else "Total Received"
+
+	# optionally return the job id for tracking
+	return {"job_id": doc.name, "status": doc.status}

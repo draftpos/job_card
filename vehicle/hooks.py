@@ -264,3 +264,11 @@ fixtures = [
         ]
     }
 ]
+
+doc_events = {
+    "GRV": {
+        "before_insert": "vehicle.vehicle.doctype.grv.grv.run_recalc",
+        "before_update": "vehicle.vehicle.doctype.grv.grv.run_recalc",
+        "before_save": "vehicle.vehicle.doctype.grv.grv.run_recalc",
+    }
+}

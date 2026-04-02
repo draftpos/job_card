@@ -101,3 +101,5 @@ def auto_issue_all(job_quote):
         frappe.db.commit()
 
     return {"status": "success"}
+
+
