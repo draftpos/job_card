@@ -14,10 +14,6 @@ class JobQuote(Document):
 		self.total_quantity2 = self.total_quantity
 
 
-	
-
-
-	
 	def before_submit(self):
 		not_fully_issued = []
 

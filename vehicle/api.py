@@ -43,9 +43,20 @@ def convert_quote_to_wip(job_quote):
         "customer": old_doc.customer,
         "job_quote": old_doc.name, 
         "reg_number": old_doc.reg_number,
-        "job_status": "In Progress"
+        "job_status": "In Progress",
+        "car_name": old_doc.car_name,
         # copy other fields you want here
     })
+    for i in range(1, 11):
+        # field names
+        task_field = f"task{i}_name"
+
+        # get value safely from old_doc
+        value = getattr(old_doc, task_field, None)
+
+        # only set if it exists, else explicitly set None
+        setattr(new_doc, task_field, value if value else None)
+
     # 🔹 Duplicate child tables
     for i in range(1, 11):
         table_field = f"table_{i}"

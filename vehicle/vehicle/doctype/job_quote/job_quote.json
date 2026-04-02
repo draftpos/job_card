@@ -35,6 +35,7 @@
   "column_break_orgl",
   "naming_series",
   "total_amount",
+  "total_buying_amount",
   "column_break_akth",
   "quotation",
   "total_quantity",
@@ -43,36 +44,56 @@
   "table_1",
   "task1_total_amount",
   "task1_total_qty",
+  "task1_total_buying_amount",
   "task_2_section",
   "task2_name",
   "table_2",
   "task2_total_qty",
   "task2_total_amount",
+  "task2_total_buying_amount",
   "task_3_section",
   "task3_name",
   "table_3",
   "task3_total_qty",
   "task3_total_amount",
+  "task3_total_buying_amount",
   "task_4_section",
   "task4_name",
   "table_4",
   "task4_total_qty",
   "task4_total_amount",
+  "task4_total_buying_amount",
   "task_5_section",
   "task5_name",
   "table_5",
   "task5_total_qty",
   "task5_total_amount",
+  "task5_total_buying_amount",
   "task_6_section",
   "table_6",
+  "task6_total_amount",
+  "task6_total_buying_amount",
+  "task6_total_qty",
   "task_7_section",
   "table_7",
+  "task7_total_amount",
+  "task7_total_buying_amount",
+  "task7_total_qty",
   "task_8_section",
   "table_8",
+  "task8_total_amount",
+  "task8_total_buying_amount",
+  "task8_total_qty",
   "task_9_section",
   "table_9",
+  "task9_total_amount",
+  "task9_total_buying_amount",
+  "task9_total_qty",
   "task_10_section",
-  "table_10"
+  "table_10",
+  "task10_total_buying_amount",
+  "task10_total_amount",
+  "task10_total_qty"
  ],
  "fields": [
   {
@@ -178,10 +199,6 @@
   {
    "fieldname": "make",
    "fieldtype": "Link",
-   "in_filter": 1,
-   "in_list_view": 1,
-   "in_preview": 1,
-   "in_standard_filter": 1,
    "label": "Make",
    "options": "Vehicle Make"
   },
@@ -191,6 +208,7 @@
    "fieldtype": "Link",
    "in_filter": 1,
    "in_global_search": 1,
+   "in_list_view": 1,
    "in_preview": 1,
    "in_standard_filter": 1,
    "label": "Reg Number",
@@ -216,11 +234,6 @@
   {
    "fieldname": "year_model",
    "fieldtype": "Data",
-   "in_filter": 1,
-   "in_global_search": 1,
-   "in_list_view": 1,
-   "in_preview": 1,
-   "in_standard_filter": 1,
    "label": "Year Model"
   },
   {
@@ -424,6 +437,11 @@
   {
    "fieldname": "customer",
    "fieldtype": "Link",
+   "in_filter": 1,
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
    "label": "Customer Name",
    "options": "Customer",
    "reqd": 1
@@ -487,7 +505,7 @@
   {
    "allow_in_quick_entry": 1,
    "fieldname": "total_amount2",
-   "fieldtype": "Link",
+   "fieldtype": "Data",
    "in_filter": 1,
    "in_global_search": 1,
    "in_preview": 1,
@@ -501,13 +519,124 @@
    "fieldtype": "Data",
    "label": "Total Quantity",
    "read_only": 1
+  },
+  {
+   "fieldname": "task1_total_buying_amount",
+   "fieldtype": "Float",
+   "label": "Task1 Total Buying",
+   "read_only": 1
+  },
+  {
+   "fieldname": "task2_total_buying_amount",
+   "fieldtype": "Float",
+   "label": "Task2 Total Buying  ",
+   "read_only": 1
+  },
+  {
+   "fieldname": "task3_total_buying_amount",
+   "fieldtype": "Float",
+   "label": "Task3 Total Buying ",
+   "read_only": 1
+  },
+  {
+   "fieldname": "task4_total_buying_amount",
+   "fieldtype": "Float",
+   "label": "Task4 Total Buying",
+   "read_only": 1
+  },
+  {
+   "fieldname": "task5_total_buying_amount",
+   "fieldtype": "Float",
+   "label": "Task5 Total Buying",
+   "read_only": 1
+  },
+  {
+   "fieldname": "task6_total_buying_amount",
+   "fieldtype": "Float",
+   "label": "Task6 Total Buying"
+  },
+  {
+   "fieldname": "task7_total_buying_amount",
+   "fieldtype": "Float",
+   "label": "Task7 Total Buying"
+  },
+  {
+   "fieldname": "task8_total_buying_amount",
+   "fieldtype": "Float",
+   "label": "Task8 Total Buying"
+  },
+  {
+   "fieldname": "task9_total_buying_amount",
+   "fieldtype": "Float",
+   "label": "Task9 Total Buying"
+  },
+  {
+   "fieldname": "task10_total_buying_amount",
+   "fieldtype": "Float",
+   "label": "Task10 Total Buying"
+  },
+  {
+   "fieldname": "task6_total_qty",
+   "fieldtype": "Float",
+   "label": "Task6 Total Qty  "
+  },
+  {
+   "fieldname": "task7_total_qty",
+   "fieldtype": "Float",
+   "label": "Task7 Total Qty  "
+  },
+  {
+   "fieldname": "task8_total_qty",
+   "fieldtype": "Float",
+   "label": "Task8 Total Qty  "
+  },
+  {
+   "fieldname": "task9_total_qty",
+   "fieldtype": "Float",
+   "label": "Task9 Total Qty  "
+  },
+  {
+   "fieldname": "task10_total_qty",
+   "fieldtype": "Float",
+   "label": "Task10 Total Qty  "
+  },
+  {
+   "fieldname": "task6_total_amount",
+   "fieldtype": "Float",
+   "label": "Task6 Total  Amount"
+  },
+  {
+   "fieldname": "task7_total_amount",
+   "fieldtype": "Float",
+   "label": "Task7 Total  Amount"
+  },
+  {
+   "fieldname": "task8_total_amount",
+   "fieldtype": "Float",
+   "label": "Task8 Total  Amount"
+  },
+  {
+   "fieldname": "task9_total_amount",
+   "fieldtype": "Float",
+   "label": "Task9 Total  Amount"
+  },
+  {
+   "fieldname": "task10_total_amount",
+   "fieldtype": "Float",
+   "label": "Task10 Total  Amount"
+  },
+  {
+   "fieldname": "total_buying_amount",
+   "fieldtype": "Float",
+   "label": "Total Buying Amount  ",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-04-02 11:46:38.167329",
+ "modified": "2026-04-02 14:24:48.388397",
  "modified_by": "Administrator",
  "module": "Vehicle",
  "name": "Job Quote",

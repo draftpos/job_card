@@ -16,32 +16,38 @@
   "column_break_pspw",
   "purchase_order",
   "total_amount",
+  "total_buying_amount",
   "total_quantity",
   "task_1_section",
   "task1_name",
   "table_1",
   "task1_total_qty",
   "task1_total_amount",
+  "task1_total_buying_amount",
   "task_2_section",
   "task2_name",
   "table_2",
   "task2_total_qty",
   "task2_total_amount",
+  "task2_total_buying_amount",
   "task_3_section",
   "task3_name",
   "table_3",
   "task3_total_qty",
   "task3_total_amount",
+  "task3_total_buying_amount",
   "task_4_section",
   "task4_name",
   "table_4",
   "task4_total_qty",
   "task4_total_amount",
+  "task4_total_buying_amount",
   "task_5_section",
   "task5_name",
   "table_5",
   "task5_total_qty",
   "task5_total_amount",
+  "task5_total_buying_amount",
   "task_6_section",
   "table_6",
   "task_7_section",
@@ -367,7 +373,7 @@
   {
    "fieldname": "total_amount",
    "fieldtype": "Float",
-   "label": "Total Amount "
+   "label": "Total Selling Amount "
   },
   {
    "fieldname": "total_quantity",
@@ -430,13 +436,48 @@
    "label": "Job Status",
    "options": "Task Status",
    "read_only": 1
+  },
+  {
+   "fieldname": "task1_total_buying_amount",
+   "fieldtype": "Float",
+   "label": "Task1 Total Buying",
+   "read_only": 1
+  },
+  {
+   "fieldname": "task2_total_buying_amount",
+   "fieldtype": "Float",
+   "label": "Task2 Total Buying",
+   "read_only": 1
+  },
+  {
+   "fieldname": "task3_total_buying_amount",
+   "fieldtype": "Float",
+   "label": "Task3 Total Buying",
+   "read_only": 1
+  },
+  {
+   "fieldname": "task4_total_buying_amount",
+   "fieldtype": "Float",
+   "label": "Task4 Total Buying",
+   "read_only": 1
+  },
+  {
+   "fieldname": "task5_total_buying_amount",
+   "fieldtype": "Float",
+   "label": "Task5 Total Buying",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_buying_amount",
+   "fieldtype": "Float",
+   "label": "Total Buying Amount"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-03-31 15:09:05.047703",
+ "modified": "2026-04-02 14:51:21.860279",
  "modified_by": "Administrator",
  "module": "Vehicle",
  "name": "Vehicle Purchase Order",

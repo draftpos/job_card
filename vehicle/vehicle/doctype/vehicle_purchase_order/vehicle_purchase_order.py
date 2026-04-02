@@ -60,7 +60,9 @@ def get_job_quote(source_name):
 		"fuel", "make", "reg_number", "speedometer",
 		"body_type", "chasis",
 		"customer", "customer_type",
-		"total_amount", "total_quantity"
+		"total_amount", "total_quantity",
+		"total_buying_amount"
+		
 	]
 
 	for field in fields_to_copy:
@@ -71,6 +73,7 @@ def get_job_quote(source_name):
 		target_doc.set(f"task{i}_name", source_doc.get(f"task{i}_name"))
 		target_doc.set(f"task{i}_total_amount", source_doc.get(f"task{i}_total_amount"))
 		target_doc.set(f"task{i}_total_qty", source_doc.get(f"task{i}_total_qty"))
+		target_doc.set(f"task{i}_total_buying_amount", source_doc.get(f"task{i}_total_buying_amount"))
 
 	# --- Copy child tables ---
 	for i in range(1, 11):
@@ -84,6 +87,7 @@ def get_job_quote(source_name):
 				"rate": row.rate,
 				"amount": row.amount,
 				"buying_price": row.buying_price,
+				"buying_amount":row.buying_amount,
 				"margin": row.margin
 			})
 
