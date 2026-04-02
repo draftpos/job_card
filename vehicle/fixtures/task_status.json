@@ -33,5 +33,19 @@
   "modified": "2026-03-19 12:46:30.889194",
   "name": "In Progress",
   "status": "In Progress"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Task Status",
+  "modified": "2026-03-31 15:15:58.171593",
+  "name": "Total Received",
+  "status": "Total Received"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Task Status",
+  "modified": "2026-03-31 15:15:47.094546",
+  "name": "Partial Received",
+  "status": "Partial Received"
  }
 ]
