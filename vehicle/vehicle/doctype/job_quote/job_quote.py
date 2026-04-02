@@ -6,11 +6,15 @@ from frappe.model.document import Document
 
 class JobQuote(Document):
 
-	# def before_insert(self):
+	def before_save(self):
+		# optional: reset other fields too
+		self.total_amount1 = self.total_amount
+		self.total_quantity1 = self.total_quantity
+		self.total_amount2 = self.total_amount
+		self.total_quantity2 = self.total_quantity
 
-	# 	# optional: reset other fields too
-	# 	self.job_status = "Quotation"
-	# 	self.job_wip = None
+
+	
 
 
 	

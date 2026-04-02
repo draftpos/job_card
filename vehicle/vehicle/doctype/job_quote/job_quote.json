@@ -6,12 +6,14 @@
  "engine": "InnoDB",
  "field_order": [
   "vehicle_tab",
+  "total_amount2",
   "reg_number",
   "car_name",
   "engine_number",
   "model",
   "color",
   "column_break_svfi",
+  "total_quantity2",
   "fuel",
   "year_model",
   "make",
@@ -22,9 +24,11 @@
   "customer_tab",
   "customer",
   "job_status",
+  "job_wip",
   "amended_from",
   "column_break_sybl",
-  "job_wip",
+  "total_amount1",
+  "total_quantity1",
   "job_quote",
   "details_tab",
   "section_break_aqwu",
@@ -467,13 +471,43 @@
    "no_copy": 1,
    "options": "Task Status",
    "read_only": 1
+  },
+  {
+   "fieldname": "total_amount1",
+   "fieldtype": "Data",
+   "label": "Total Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_quantity1",
+   "fieldtype": "Data",
+   "label": "Total Quantity",
+   "read_only": 1
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "total_amount2",
+   "fieldtype": "Link",
+   "in_filter": 1,
+   "in_global_search": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Total Amount",
+   "options": "Reg Number",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_quantity2",
+   "fieldtype": "Data",
+   "label": "Total Quantity",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-04-02 09:06:58.457249",
+ "modified": "2026-04-02 11:46:38.167329",
  "modified_by": "Administrator",
  "module": "Vehicle",
  "name": "Job Quote",

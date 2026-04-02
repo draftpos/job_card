@@ -33,7 +33,7 @@ class GRV(Document):
 
 		# 🔹 Only update if there are rows
 		if found_any:
-			self.status = "Partial Received" if has_balance else "Total Received"
+			self.grv_status = "Partial Received" if has_balance else "Total Received"
 
 @frappe.whitelist()
 def get_vehicle_order(source_name):
@@ -118,7 +118,7 @@ def process_grv_item(item_code, qty, purchase_order=None):
 
 
 
-# 🔹 Single function to recalc balances and status
+# 🔹 Single function to recalc balances and grv_status
 def run_recalc(doc, method=None):
 	
 	child_tables = [
@@ -139,7 +139,7 @@ def run_recalc(doc, method=None):
 			if row.balance_qty > 0:
 				has_balance = True
 
-	doc.status = "Partial Received" if has_balance else "Total Received"
+	doc.grv_status = "Partial Received" if has_balance else "Total Received"
 
 	# optionally return the job id for tracking
-	return {"job_id": doc.name, "status": doc.status}
+	return {"job_id": doc.name, "grv_status": doc.grv_status}

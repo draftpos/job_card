@@ -13,7 +13,7 @@
   "supplier",
   "job_quote",
   "column_break_pspw",
-  "status",
+  "grv_status",
   "total_amount",
   "total_quantity",
   "purchase_invoice",
@@ -85,21 +85,18 @@
    "fetch_from": "purchase_order.job_quote",
    "fieldname": "job_quote",
    "fieldtype": "Data",
+   "in_filter": 1,
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
    "label": "Job Quote",
    "options": "Job Quote",
-   "reqd": 1
+   "read_only": 1
   },
   {
    "fieldname": "column_break_pspw",
    "fieldtype": "Column Break"
-  },
-  {
-   "allow_on_submit": 1,
-   "default": "Partial Received",
-   "fieldname": "status",
-   "fieldtype": "Link",
-   "label": "Status",
-   "options": "Task Status"
   },
   {
    "collapsible": 1,
@@ -329,22 +326,12 @@
   {
    "fieldname": "engine_number",
    "fieldtype": "Link",
-   "in_filter": 1,
-   "in_global_search": 1,
-   "in_list_view": 1,
-   "in_preview": 1,
-   "in_standard_filter": 1,
    "label": "Engine Number",
    "options": "Engine Number"
   },
   {
    "fieldname": "year_model",
    "fieldtype": "Data",
-   "in_filter": 1,
-   "in_global_search": 1,
-   "in_list_view": 1,
-   "in_preview": 1,
-   "in_standard_filter": 1,
    "label": "Year Model"
   },
   {
@@ -360,10 +347,6 @@
   {
    "fieldname": "make",
    "fieldtype": "Link",
-   "in_filter": 1,
-   "in_list_view": 1,
-   "in_preview": 1,
-   "in_standard_filter": 1,
    "label": "Make",
    "options": "Vehicle Make"
   },
@@ -416,6 +399,11 @@
    "fetch_from": "purchase_order.supplier",
    "fieldname": "supplier",
    "fieldtype": "Data",
+   "in_filter": 1,
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
    "label": "Supplier",
    "options": "Vehicle Purchase Order",
    "read_only": 1
@@ -435,6 +423,19 @@
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "Partial Received",
+   "fieldname": "grv_status",
+   "fieldtype": "Link",
+   "in_filter": 1,
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Grv Status",
+   "options": "Task Status"
   }
  ],
  "grid_page_length": 50,
@@ -459,7 +460,7 @@
    "link_fieldname": "Name"
   }
  ],
- "modified": "2026-04-02 10:01:34.934992",
+ "modified": "2026-04-02 11:59:29.972342",
  "modified_by": "Administrator",
  "module": "Vehicle",
  "name": "GRV",

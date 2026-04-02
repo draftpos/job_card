@@ -46,7 +46,6 @@ def convert_quote_to_wip(job_quote):
         "job_status": "In Progress"
         # copy other fields you want here
     })
-
     # 🔹 Duplicate child tables
     for i in range(1, 11):
         table_field = f"table_{i}"
